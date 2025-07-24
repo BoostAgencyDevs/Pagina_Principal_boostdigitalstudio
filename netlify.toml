@@ -1,0 +1,26 @@
+# =============================================================================
+#      Archivo de Configuración para Despliegue en Netlify
+# =============================================================================
+# Coloca este archivo en la raíz de tu repositorio (al mismo nivel que la
+# carpeta `frontend` y el `README.md`).
+
+[build]
+  # Comando de construcción:
+  # 1. Instala dependencias (npm install)
+  # 2. Configura la URL de la API (npm run config)
+  # 3. Compila el proyecto para producción (npm run build)
+  command = "npm install && npm run config && npm run build"
+
+  # Directorio de publicación: La carpeta con los archivos compilados.
+  # Esta ruta se basa en tu `angular.json` que especifica: "outputPath": "dist/frontend"
+  publish = "dist/frontend"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# Regla de redirección para que las rutas de Angular (SPA) funcionen.
+# Esto evita errores 404 al recargar la página en una ruta como /servicios.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
