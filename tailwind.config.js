@@ -21,6 +21,10 @@ module.exports = {
       fontFamily: {
         sans: ['Montserrat', 'sans-serif'],  // Fuente principal de la aplicación
       },
+      // Breakpoints personalizados
+      screens: {
+        '3xl': '1920px', // Nuevo breakpoint para pantallas muy grandes
+      },
       // Paleta de colores personalizada
       colors: {
         // Paleta de colores principal basada en influur.com
