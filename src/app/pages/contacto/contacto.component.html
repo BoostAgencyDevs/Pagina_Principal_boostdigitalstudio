@@ -10,64 +10,64 @@ Permite a los usuarios enviar mensajes a través de un formulario.
 <div class="min-h-screen bg-black text-white font-montserrat flex flex-col justify-between animate-fade-in">
   <!-- Encabezado -->
   <section class="text-center py-10 sm:py-12 animate-slide-up">
-    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 text-white">Contáctanos</h1>
-    <p class="text-base sm:text-lg text-white/80">¿Tienes alguna pregunta? Contáctanos y te responderemos lo antes posible.</p>
+    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl 3xl:text-8xl font-bold mb-3 text-white">Contáctanos</h1>
+    <p class="text-lg sm:text-xl 3xl:text-2xl text-white/80">¿Tienes alguna pregunta? Contáctanos y te responderemos lo antes posible.</p>
   </section>
 
   <!-- Contenedor principal -->
-  <section class="flex flex-col md:flex-row gap-8 max-w-screen-2xl 3xl:max-w-[1800px] mx-auto w-full px-3 sm:px-5 md:px-8 lg:px-10 xl:px-12 2xl:px-12 3xl:px-16 mb-16 animate-fade-in">
+  <section class="flex flex-col md:flex-row gap-8 w-full px-3 sm:px-5 md:px-8 lg:px-10 xl:px-12 2xl:px-12 3xl:px-[10px] mb-16 animate-fade-in">
     <!-- Formulario -->
     <!-- Se añade [formGroup] y (ngSubmit) para vincular con el formulario reactivo -->
     <form [formGroup]="contactForm" (ngSubmit)="submitContactForm()" class="flex-1 bg-white/5 rounded-xl p-4 sm:p-6 shadow-lg flex flex-col gap-4 animate-slide-up">
       <label class="flex flex-col text-left gap-1">
-        <span class="font-semibold text-sm sm:text-base">Nombre *</span>
+        <span class="font-semibold text-base sm:text-lg 3xl:text-xl">Nombre *</span>
         <!-- Se añade formControlName para vincular con el control 'names' -->
-        <input type="text" formControlName="names" placeholder="Su nombre" class="rounded-xl px-3 sm:px-4 py-2 bg-black/80 border border-white/20 text-white placeholder:text-white/50 focus:border-[#f05f02] focus:outline-none transition-all text-sm sm:text-base" required />
-        <div *ngIf="contactForm.get('names')?.invalid && contactForm.get('names')?.touched" class="text-red-400 text-sm">
+        <input type="text" formControlName="names" placeholder="Su nombre" class="rounded-xl px-3 sm:px-4 py-2 bg-black/80 border border-white/20 text-white placeholder:text-white/50 focus:border-[#f05f02] focus:outline-none transition-all text-base sm:text-lg 3xl:text-xl" required />
+        <div *ngIf="contactForm.get('names')?.invalid && contactForm.get('names')?.touched" class="text-red-400 text-base">
           Nombre es requerido.
         </div>
       </label>
       <label class="flex flex-col text-left gap-1">
-        <span class="font-semibold text-sm sm:text-base">Apellido *</span>
+        <span class="font-semibold text-base sm:text-lg 3xl:text-xl">Apellido *</span>
         <!-- Se añade formControlName para vincular con el control 'lastnames' -->
-        <input type="text" formControlName="lastnames" placeholder="Su apellido" class="rounded-xl px-3 sm:px-4 py-2 bg-black/80 border border-white/20 text-white placeholder:text-white/50 focus:border-[#f05f02] focus:outline-none transition-all text-sm sm:text-base" required />
-        <div *ngIf="contactForm.get('lastnames')?.invalid && contactForm.get('lastnames')?.touched" class="text-red-400 text-sm">
+        <input type="text" formControlName="lastnames" placeholder="Su apellido" class="rounded-xl px-3 sm:px-4 py-2 bg-black/80 border border-white/20 text-white placeholder:text-white/50 focus:border-[#f05f02] focus:outline-none transition-all text-base sm:text-lg 3xl:text-xl" required />
+        <div *ngIf="contactForm.get('lastnames')?.invalid && contactForm.get('lastnames')?.touched" class="text-red-400 text-base">
           Apellido es requerido.
         </div>
       </label>
       <label class="flex flex-col text-left gap-1">
-        <span class="font-semibold text-sm sm:text-base">Correo *</span>
+        <span class="font-semibold text-base sm:text-lg 3xl:text-xl">Correo *</span>
         <!-- Se añade formControlName para vincular con el control 'email' -->
-        <input type="email" formControlName="email" placeholder="micorreo@email.com" class="rounded-xl px-3 sm:px-4 py-2 bg-black/80 border border-white/20 text-white placeholder:text-white/50 focus:border-[#f05f02] focus:outline-none transition-all text-sm sm:text-base" required />
-        <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" class="text-red-400 text-sm">
+        <input type="email" formControlName="email" placeholder="micorreo@email.com" class="rounded-xl px-3 sm:px-4 py-2 bg-black/80 border border-white/20 text-white placeholder:text-white/50 focus:border-[#f05f02] focus:outline-none transition-all text-base sm:text-lg 3xl:text-xl" required />
+        <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" class="text-red-400 text-base">
           <span *ngIf="contactForm.get('email')?.errors?.['required']">Correo es requerido.</span>
           <span *ngIf="contactForm.get('email')?.errors?.['email']">Formato de correo inválido.</span>
         </div>
       </label>
       <label class="flex flex-col text-left gap-1">
-        <span class="font-semibold text-sm sm:text-base">Teléfono *</span>
+        <span class="font-semibold text-base sm:text-lg 3xl:text-xl">Teléfono *</span>
         <!-- Se añade formControlName para vincular con el control 'mobile' -->
-        <input type="tel" formControlName="mobile" placeholder="Ej: +57 301 123 4567" class="rounded-xl px-3 sm:px-4 py-2 bg-black/80 border border-white/20 text-white placeholder:text-white/50 focus:border-[#f05f02] focus:outline-none transition-all text-sm sm:text-base" required />
-        <div *ngIf="contactForm.get('mobile')?.invalid && contactForm.get('mobile')?.touched" class="text-red-400 text-sm">
+        <input type="tel" formControlName="mobile" placeholder="Ej: +57 301 123 4567" class="rounded-xl px-3 sm:px-4 py-2 bg-black/80 border border-white/20 text-white placeholder:text-white/50 focus:border-[#f05f02] focus:outline-none transition-all text-base sm:text-lg 3xl:text-xl" required />
+        <div *ngIf="contactForm.get('mobile')?.invalid && contactForm.get('mobile')?.touched" class="text-red-400 text-base">
           <span *ngIf="contactForm.get('mobile')?.errors?.['required']">Teléfono es requerido.</span>
           <span *ngIf="contactForm.get('mobile')?.errors?.['minlength']">Mínimo 7 dígitos.</span>
         </div>
       </label>
       <label class="flex flex-col text-left gap-1">
-        <span class="font-semibold text-sm sm:text-base">Compañia <span class="text-white/50 text-xs">(opcional)</span></span>
+        <span class="font-semibold text-base sm:text-lg 3xl:text-xl">Compañia <span class="text-white/50 text-sm 3xl:text-base">(opcional)</span></span>
         <!-- Se añade formControlName para vincular con el control 'company' -->
-        <input type="text" formControlName="company" placeholder="Ej: Compañía S.A.S." class="rounded-xl px-3 sm:px-4 py-2 bg-black/80 border border-white/20 text-white placeholder:text-white/50 focus:border-[#f05f02] focus:outline-none transition-all text-sm sm:text-base" />
+        <input type="text" formControlName="company" placeholder="Ej: Compañía S.A.S." class="rounded-xl px-3 sm:px-4 py-2 bg-black/80 border border-white/20 text-white placeholder:text-white/50 focus:border-[#f05f02] focus:outline-none transition-all text-base sm:text-lg 3xl:text-xl" />
       </label>
       <label class="flex flex-col text-left gap-1">
-        <span class="font-semibold text-sm sm:text-base">Mensaje</span>
+        <span class="font-semibold text-base sm:text-lg 3xl:text-xl">Mensaje</span>
         <!-- Se añade formControlName para vincular con el control 'message' -->
-        <textarea rows="4" formControlName="message" placeholder="Escribe su mensaje..." class="rounded-xl px-3 sm:px-4 py-2 bg-black/80 border border-white/20 text-white placeholder:text-white/50 focus:border-[#f05f02] focus:outline-none transition-all resize-none text-sm sm:text-base"></textarea>
+        <textarea rows="4" formControlName="message" placeholder="Escribe su mensaje..." class="rounded-xl px-3 sm:px-4 py-2 bg-black/80 border border-white/20 text-white placeholder:text-white/50 focus:border-[#f05f02] focus:outline-none transition-all resize-none text-base sm:text-lg 3xl:text-xl"></textarea>
       </label>
-      <button type="submit" [disabled]="loading" class="btn-boost mt-2 w-full">
+      <button type="submit" [disabled]="loading" class="btn-boost mt-2 w-full text-base sm:text-lg 3xl:text-xl">
         {{ loading ? 'Enviando...' : 'Enviar mensaje' }}
       </button>
-      <div *ngIf="error" class="text-red-400 text-center mt-2">{{ error }}</div>
-      <div *ngIf="message" class="text-green-400 text-center mt-2">{{ message }}</div>
+      <div *ngIf="error" class="text-red-400 text-center mt-2 text-base sm:text-lg 3xl:text-xl">{{ error }}</div>
+      <div *ngIf="message" class="text-green-400 text-center mt-2 text-base sm:text-lg 3xl:text-xl">{{ message }}</div>
     </form>
 
     <!-- Información de contacto -->
@@ -75,25 +75,25 @@ Permite a los usuarios enviar mensajes a través de un formulario.
       <div class="flex items-start gap-3">
         <span class="mt-1"><svg class="w-6 h-6 text-[#f05f02]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" /><circle cx="12" cy="10" r="3" /></svg></span>
         <div>
-          <span class="font-semibold text-sm sm:text-base">Dirección:</span><br />
-          <span class="text-white/80 text-sm sm:text-base">Av. Principal 123, Ciudad, País</span>
+          <span class="font-semibold text-base sm:text-lg 3xl:text-xl">Dirección:</span><br />
+          <span class="text-white/80 text-base sm:text-lg 3xl:text-xl">Av. Principal 123, Ciudad, País</span>
         </div>
       </div>
       <div class="flex items-start gap-3">
         <span class="mt-1"><svg class="w-6 h-6 text-[#f05f02]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 12v1a4 4 0 01-8 0v-1m8 0a4 4 0 00-8 0m8 0V8a4 4 0 00-8 0v4m8 0a4 4 0 01-8 0" /></svg></span>
         <div>
-          <span class="font-semibold text-sm sm:text-base">Correos:</span><br />
-          <span class="text-white/80 block text-sm sm:text-base">info&#64;boostagency.com</span>
-          <span class="text-white/80 block text-sm sm:text-base">soporte&#64;boostagency.com</span>
+          <span class="font-semibold text-base sm:text-lg 3xl:text-xl">Correos:</span><br />
+          <span class="text-white/80 block text-base sm:text-lg 3xl:text-xl">info&#64;boostagency.com</span>
+          <span class="text-white/80 block text-base sm:text-lg 3xl:text-xl">soporte&#64;boostagency.com</span>
         </div>
       </div>
       <div class="flex items-start gap-3">
         <span class="mt-1"><svg class="w-6 h-6 text-[#f05f02]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2V5zm0 10a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2zm10-10a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zm0 10a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg></span>
         <div>
-          <span class="font-semibold text-sm sm:text-base">Teléfonos:</span><br />
-          <span class="text-white/80 block text-sm sm:text-base">Colombia: +57 301 123 4567</span>
-          <span class="text-white/80 block text-sm sm:text-base">Panamá: +507 6789 1234</span>
-          <span class="text-white/80 block text-sm sm:text-base">USA: +1 (305) 555-6789</span>
+          <span class="font-semibold text-base sm:text-lg 3xl:text-xl">Teléfonos:</span><br />
+          <span class="text-white/80 block text-base sm:text-lg 3xl:text-xl">Colombia: +57 301 123 4567</span>
+          <span class="text-white/80 block text-base sm:text-lg 3xl:text-xl">Panamá: +507 6789 1234</span>
+          <span class="text-white/80 block text-base sm:text-lg 3xl:text-xl">USA: +1 (305) 555-6789</span>
         </div>
       </div>
     </div>
