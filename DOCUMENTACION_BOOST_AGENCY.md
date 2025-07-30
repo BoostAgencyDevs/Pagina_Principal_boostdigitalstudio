@@ -1,6 +1,6 @@
 # DOCUMENTACIÓN BOOST AGENCY - ESTRUCTURA ACTUALIZADA
 
-## ESTRUCTURA ORIGINAL GUARDADA (JUNIO 2024)
+## ESTRUCTURA ORIGINAL GUARDADA (JUNIO 2024) - ACTUALIZADA PARA PANTALLAS GRANDES
 
 ### HEADER - ESTRUCTURA ORIGINAL
 - **Padding reducido**: `py-1 md:py-2 lg:py-3 xl:py-4 3xl:py-5`
@@ -12,6 +12,7 @@
   - Efecto hover: fondo transparente, borde naranja, sombra blanca con opacidad
   - Efecto click: fondo transparente, borde naranja, sombra blanca
 - **Menú móvil**: `lg:hidden` (en lugar de `xl:hidden`)
+- **Ancho máximo optimizado para pantallas grandes**: `max-w-[1800px] xl:max-w-[2000px] 2xl:max-w-[2200px] 3xl:max-w-[2400px]`
 
 ### FOOTER - ESTRUCTURA ORIGINAL
 - **Enlaces Rápidos**: 
@@ -30,6 +31,7 @@
 - **Grid Principal**: 
   - Estructura: `lg:grid-cols-2 xl:grid-cols-2`
   - Gap: `gap-8 md:gap-12 lg:gap-16 xl:gap-20 3xl:gap-24`
+  - **Ancho máximo optimizado para pantallas grandes**: `max-w-[1800px] xl:max-w-[2000px] 2xl:max-w-[2200px] 3xl:max-w-[2400px]`
 
 - **Columna 1 - Información de la empresa**:
   - Logo: `max-w-[100px] sm:max-w-[120px] lg:max-w-[140px] xl:max-w-[160px] 3xl:max-w-[180px]`
@@ -51,6 +53,11 @@
 - **H1 Hero Principal**: 
   - Tamaño: `text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-6xl 2xl:text-7xl 3xl:text-8xl`
   - Texto: "Make digital decisions for business growth."
+  - **Ancho máximo optimizado para pantallas grandes**: `max-w-[1800px] xl:max-w-[2000px] 2xl:max-w-[2200px] 3xl:max-w-[2400px]`
+
+- **Todas las secciones de la página**:
+  - **Ancho máximo optimizado para pantallas grandes**: `max-w-[1800px] xl:max-w-[2000px] 2xl:max-w-[2200px] 3xl:max-w-[2400px]`
+  - Secciones incluidas: Hero Principal, Diseño Estratégico, Cinta Animada, Slogan + Botones, Blog Boost, Estadísticas, Newsletter
 
 - **Última Franja Antes del Footer**:
   - Sin padding vertical: `py-0`
@@ -68,5 +75,5 @@
 
 ## ÚLTIMA ACTUALIZACIÓN
 - **Fecha**: Junio 2024
-- **Estado**: Estructura final y estable
-- **Notas**: Todos los elementos están optimizados y alineados correctamente
+- **Estado**: Estructura final y estable, optimizada para pantallas grandes
+- **Notas**: Todos los elementos están optimizados y alineados correctamente. Se eliminó el espacio vacío excesivo en pantallas grandes (1920px+) mediante el ajuste de anchos máximos progresivos.
