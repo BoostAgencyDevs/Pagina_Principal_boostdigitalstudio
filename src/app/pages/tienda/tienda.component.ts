@@ -12,7 +12,8 @@ interface Producto {
 
 @Component({
   selector: 'app-tienda',
-  templateUrl: './tienda.component.html'
+  templateUrl: './tienda.component.html',
+  styleUrls: ['./tienda.component.css']
 })
 export class TiendaComponent implements OnInit {
   categorias: string[] = ['Todos', 'Gorras', 'Camisetas', 'Hoodies', 'Libros', 'Accesorios', 'E-books'];

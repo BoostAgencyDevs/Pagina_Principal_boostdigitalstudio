@@ -19,7 +19,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 @Component({
   selector: 'app-contacto',
   templateUrl: './contacto.component.html',
-  //styleUrls: ['./contacto.component.css'] // Comentado si no hay un archivo CSS específico para este componente
+  styleUrls: ['./contacto.component.css']
 })
 export class ContactoComponent {
   /** Formulario de contacto */

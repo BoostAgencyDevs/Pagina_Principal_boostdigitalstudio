@@ -22,7 +22,8 @@ import { Router, NavigationEnd } from '@angular/router';
  */
 @Component({
   selector: 'app-layout',  // Selector para usar en templates
-  templateUrl: './layout.component.html'
+  templateUrl: './layout.component.html',
+  styleUrls: ['./layout.component.css']
 })
 export class LayoutComponent implements OnInit {
   /** Estado del menú móvil (abierto/cerrado) */

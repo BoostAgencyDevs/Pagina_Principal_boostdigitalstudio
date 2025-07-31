@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-planes',
-  templateUrl: './planes.component.html'
+  templateUrl: './planes.component.html',
+  styleUrls: ['./planes.component.css']
 })
 export class PlanesComponent {
   selectedPlan: number = 0;
