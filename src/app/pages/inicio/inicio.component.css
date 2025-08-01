@@ -1,3 +1,69 @@
 * {
   font-family: 'Montserrat', sans-serif;
+}
+
+/* Delay para animación del robot */
+.robot-delay {
+  animation-delay: 1s;
+}
+
+/* Efectos de scroll para página inicio */
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.slide-left {
+  animation: slideInFromLeft 1s ease-out;
+}
+
+.slide-right {
+  animation: slideInFromRight 1s ease-out;
+}
+
+.slide-bottom {
+  animation: slideInFromBottom 1s ease-out;
+}
+
+.fade-scale {
+  animation: fadeInScale 1s ease-out;
 } 

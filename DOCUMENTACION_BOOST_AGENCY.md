@@ -9,6 +9,10 @@
   - Alto: `max-h-[40px] sm:max-h-[45px] lg:max-h-[55px] xl:max-h-[65px] 3xl:max-h-[75px]`
 - **Navegación visible en pantallas medianas**: `hidden lg:flex`
 - **Espaciado del menú**: `ml-4 lg:ml-6 xl:ml-8` (separación del logo)
+- **Menú de navegación optimizado para pantallas grandes**:
+  - **Tamaños de texto**: `text-xs lg:text-base xl:text-lg 2xl:text-xl 3xl:text-2xl`
+  - **Espaciado entre elementos**: `space-x-1 lg:space-x-1 xl:space-x-2 3xl:space-x-3`
+  - **Padding de enlaces**: `px-1 lg:px-2 xl:px-3 3xl:px-4 py-1 lg:py-2 xl:py-2`
 - **CTA Button**: 
   - Visible en pantallas medianas: `hidden lg:inline-flex`
   - Sin flecha, solo texto
