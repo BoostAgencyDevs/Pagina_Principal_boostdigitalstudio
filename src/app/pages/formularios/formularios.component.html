@@ -1,9 +1,9 @@
 <!--
-  Página de Formularios BOOST AGENCY
-  - Formulario 1: Cotización
-  - Formulario 2: Asesoría (solo visible tras éxito del primero)
-  - Diseño profesional, limpio y responsive con Tailwind
-  - Documentación en español en el .ts
+  Página de Formularios BOOST AGENCY
+  - Formulario 1: Cotización
+  - Formulario 2: Asesoría (solo visible tras éxito del primero)
+  - Diseño profesional, limpio y responsive con Tailwind
+  - Documentación en español en el .ts
 -->
 <div class="min-h-screen bg-black text-white p-4">
   <!-- Formulario de Cotización -->
@@ -40,7 +40,6 @@
           <label class="block mb-1 font-semibold text-gray-200">Empresa</label>
           <input formControlName="company" class="input-boost w-full" placeholder="Empresa">
         </div>
-
       </div>
       <!-- Presupuesto -->
       <div formGroupName="budgetsData" class="bg-white/5 rounded-lg p-4 border border-white/10">
@@ -183,81 +182,139 @@
           {{ showMoreFields ? 'Ver menos' : 'Ver más' }}
         </button>
       </div>
-      <button type="submit" [disabled]="loading1" class="w-60 h-14 px-6 py-2 flex items-center justify-center rounded-full bg-[#1C1A1C] text-white font-semibold text-base transition-all duration-500 ease-in-out border border-transparent hover:bg-gradient-to-tr hover:from-[#f05f02] hover:to-orange-600 hover:shadow-[0_0_20px_4px_rgba(240,95,2,0.6)] hover:-translate-y-1 hover:scale-105 hover:text-white focus:text-white active:text-white w-full mt-8">Enviar Cotización</button>
+      <button type="submit" [disabled]="loading1" class="w-full h-14 btn-boost mt-8">Enviar Cotización</button>
       <div *ngIf="error1" class="text-red-400 text-center mt-2">{{error1}}</div>
       <div *ngIf="message1" class="text-green-400 text-center mt-2">{{message1}}</div>
     </form>
   </section>
+
   <!-- Formulario de Asesoría, solo visible tras éxito del primero -->
-  <section *ngIf="form1Success" class="max-w-2xl mx-auto bg-white/10 backdrop-blur-md rounded-2xl p-8 mb-10 shadow-2xl border border-white/10">
-    <h2 class="text-3xl font-extrabold mb-4 text-center text-transparent bg-clip-text bg-gradient-to-r from-[#f05f02] to-yellow-400 drop-shadow-lg">Asesoría Gratuita</h2>
-    <form [formGroup]="form2" (ngSubmit)="submitForm2()" class="space-y-8">
-      <!-- Datos personales -->
-      <div formGroupName="leadsData" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <div>
-          <label class="block mb-1 font-semibold text-gray-200">Nombres <span class="text-[#f05f02]">*</span></label>
-          <input formControlName="names" class="input-boost w-full" placeholder="Nombres">
-          <div *ngIf="form2.get('leadsData.names')?.invalid && form2.get('leadsData.names')?.touched" class="text-red-400 text-xs mt-1">Campo requerido</div>
-        </div>
-        <div>
-          <label class="block mb-1 font-semibold text-gray-200">Apellidos <span class="text-[#f05f02]">*</span></label>
-          <input formControlName="lastnames" class="input-boost w-full" placeholder="Apellidos">
-          <div *ngIf="form2.get('leadsData.lastnames')?.invalid && form2.get('leadsData.lastnames')?.touched" class="text-red-400 text-xs mt-1">Campo requerido</div>
-        </div>
-        <div>
-          <label class="block mb-1 font-semibold text-gray-200">Teléfono <span class="text-[#f05f02]">*</span></label>
-          <input formControlName="mobile" class="input-boost w-full" placeholder="Teléfono">
-          <div *ngIf="form2.get('leadsData.mobile')?.invalid && form2.get('leadsData.mobile')?.touched" class="text-red-400 text-xs mt-1">Campo requerido</div>
-        </div>
-        <div>
-          <label class="block mb-1 font-semibold text-gray-200">Email <span class="text-[#f05f02]">*</span></label>
-          <input formControlName="email" class="input-boost w-full" placeholder="Email">
-          <div *ngIf="form2.get('leadsData.email')?.invalid && form2.get('leadsData.email')?.touched" class="text-red-400 text-xs mt-1">Campo requerido</div>
-        </div>
-        <div class="sm:col-span-2">
-          <label class="block mb-1 font-semibold text-gray-200">Empresa</label>
-          <input formControlName="company" class="input-boost w-full" placeholder="Empresa">
-        </div>
+  <dialog #asesoriaDialog class="rounded-2xl p-8 shadow-2xl backdrop:bg-gray-900 backdrop:bg-opacity-75 transition-all duration-300 bg-white/10 backdrop-blur-md border border-white/10 text-white">
+    <div class="w-full max-w-lg p-4 rounded-2xl">
+      <div class="flex justify-end">
+        <button (click)="closeDialog()" class="text-gray-400 hover:text-gray-600 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
       </div>
-      <!-- Retos -->
-      <div formGroupName="challengesData" class="bg-white/5 rounded-lg p-4 border border-white/10">
-        <label class="block mb-2 font-semibold text-gray-200">Retos</label>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-          <label class="flex items-center gap-2"><input type="checkbox" formControlName="low_sales" class="accent-[#f05f02]">Bajas ventas</label>
-          <label class="flex items-center gap-2"><input type="checkbox" formControlName="no_digital_presence" class="accent-[#f05f02]">Sin presencia digital</label>
-          <label class="flex items-center gap-2"><input type="checkbox" formControlName="no_advertising_knowledge" class="accent-[#f05f02]">Sin conocimiento de publicidad</label>
-          <label class="flex items-center gap-2"><input type="checkbox" formControlName="no_strategy" class="accent-[#f05f02]">Sin estrategia</label>
+
+      <h2 class="text-3xl font-extrabold mb-4 text-center text-transparent bg-clip-text bg-gradient-to-r from-[#f05f02] to-yellow-400 drop-shadow-lg">Asesoría Gratuita</h2>
+      <p class="text-center mb-8 text-gray-300 text-lg">
+        Por favor, completa los campos para recibir una asesoría personalizada. Los campos marcados con * son obligatorios.
+      </p>
+
+      <!-- Mensaje de estado (éxito/error/carga) -->
+      <div *ngIf="message2 || error2" [ngClass]="{
+           'bg-green-100 text-green-700': message2,
+           'bg-red-100 text-red-700': error2,
+           'bg-yellow-100 text-yellow-700': loading2 && !message2 && !error2
+           }"
+           class="p-4 mb-4 rounded-xl text-center font-medium transition-all duration-300">
+          {{ message2 || error2 }}
+      </div>
+
+      <!-- Formulario de Asesoría -->
+      <form [formGroup]="form2" (ngSubmit)="submitForm2()" class="space-y-8">
+        <!-- Datos personales -->
+        <div formGroupName="leadsData" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div>
+            <label class="block mb-1 font-semibold text-gray-200">Nombres <span class="text-[#f05f02]">*</span></label>
+            <input formControlName="names" class="input-boost w-full" placeholder="Nombres">
+            <div *ngIf="form2.get('leadsData.names')?.invalid && form2.get('leadsData.names')?.touched" class="text-red-400 text-xs mt-1">Campo requerido</div>
+          </div>
+          <div>
+            <label class="block mb-1 font-semibold text-gray-200">Apellidos <span class="text-[#f05f02]">*</span></label>
+            <input formControlName="lastnames" class="input-boost w-full" placeholder="Apellidos">
+            <div *ngIf="form2.get('leadsData.lastnames')?.invalid && form2.get('leadsData.lastnames')?.touched" class="text-red-400 text-xs mt-1">Campo requerido</div>
+          </div>
+          <div>
+            <label class="block mb-1 font-semibold text-gray-200">Teléfono <span class="text-[#f05f02]">*</span></label>
+            <input formControlName="mobile" class="input-boost w-full" placeholder="Teléfono">
+            <div *ngIf="form2.get('leadsData.mobile')?.invalid && form2.get('leadsData.mobile')?.touched" class="text-red-400 text-xs mt-1">Campo requerido</div>
+          </div>
+          <div>
+            <label class="block mb-1 font-semibold text-gray-200">Email <span class="text-[#f05f02]">*</span></label>
+            <input formControlName="email" class="input-boost w-full" placeholder="Email">
+            <div *ngIf="form2.get('leadsData.email')?.invalid && form2.get('leadsData.email')?.touched" class="text-red-400 text-xs mt-1">
+              Email requerido y válido
+            </div>
+          </div>
+          <div class="sm:col-span-2">
+            <label class="block mb-1 font-semibold text-gray-200">Empresa</label>
+            <input formControlName="company" class="input-boost w-full" placeholder="Empresa">
+          </div>
         </div>
-        <input formControlName="other" class="input-boost w-full mt-2" placeholder="Otro reto">
-      </div>
-      <!-- Presencia digital -->
-      <div formGroupName="digitalPresenceData" class="bg-white/5 rounded-lg p-4 border border-white/10">
-        <label class="block mb-2 font-semibold text-gray-200">Presencia digital</label>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
-          <label class="flex items-center gap-2"><input type="checkbox" formControlName="has_website" class="accent-[#f05f02]">Tengo sitio web</label>
-          <label class="flex items-center gap-2"><input type="checkbox" formControlName="has_social_media" class="accent-[#f05f02]">Tengo redes sociales</label>
-          <label class="flex items-center gap-2"><input type="checkbox" formControlName="wants_new_start" class="accent-[#f05f02]">Quiero empezar desde cero</label>
+
+        <!-- Desafíos -->
+        <div formGroupName="challengesData" class="bg-white/5 rounded-lg p-4 border border-white/10">
+          <label class="block mb-2 font-semibold text-gray-200">¿Cuáles son tus principales desafíos?</label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <label class="flex items-center gap-2"><input type="checkbox" formControlName="low_sales" class="accent-[#f05f02]">Pocas ventas</label>
+            <label class="flex items-center gap-2"><input type="checkbox" formControlName="no_digital_presence" class="accent-[#f05f02]">No tengo presencia digital</label>
+            <label class="flex items-center gap-2"><input type="checkbox" formControlName="no_advertising_knowledge" class="accent-[#f05f02]">No sé de pauta digital</label>
+            <label class="flex items-center gap-2"><input type="checkbox" formControlName="no_strategy" class="accent-[#f05f02]">No tengo una estrategia definida</label>
+          </div>
+          <input type="text" formControlName="other" placeholder="Otro..." class="input-boost w-full mt-2">
         </div>
-        <input formControlName="other" class="input-boost w-full mt-2" placeholder="Otro reto">
-      </div>
-      <!-- Comentarios -->
-      <div formGroupName="commentsSupportData" class="bg-white/5 rounded-lg p-4 border border-white/10">
-        <label class="block mb-1 font-semibold text-gray-200">Comentarios</label>
-        <textarea formControlName="comment" class="input-boost w-full" placeholder="Comentarios adicionales"></textarea>
-      </div>
-      <button type="submit" [disabled]="loading2" class="w-60 h-14 px-6 py-2 flex items-center justify-center rounded-full bg-[#1C1A1C] text-white font-semibold text-base transition-all duration-500 ease-in-out border border-transparent hover:bg-gradient-to-tr hover:from-[#f05f02] hover:to-orange-600 hover:shadow-[0_0_20px_4px_rgba(240,95,2,0.6)] hover:-translate-y-1 hover:scale-105 hover:text-white focus:text-white active:text-white w-full mt-8">Enviar Asesoría</button>
-      <div *ngIf="error2" class="text-red-400 text-center mt-2">{{error2}}</div>
-      <div *ngIf="message2" class="text-green-400 text-center mt-2">{{message2}}</div>
-    </form>
-  </section>
+
+        <!-- Presencia digital -->
+        <div formGroupName="digitalPresenceData" class="bg-white/5 rounded-lg p-4 border border-white/10">
+          <label class="block mb-2 font-semibold text-gray-200">Estado de tu presencia digital:</label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <label class="flex items-center gap-2"><input type="checkbox" formControlName="has_website" class="accent-[#f05f02]">Tengo página web</label>
+            <label class="flex items-center gap-2"><input type="checkbox" formControlName="has_social_media" class="accent-[#f05f02]">Tengo redes sociales</label>
+            <label class="flex items-center gap-2"><input type="checkbox" formControlName="wants_new_start" class="accent-[#f05f02]">Quiero empezar de cero</label>
+          </div>
+        </div>
+
+        <!-- Comentarios adicionales -->
+        <div formGroupName="commentsSupportData" class="bg-white/5 rounded-lg p-4 border border-white/10">
+          <label class="block mb-1 font-semibold text-gray-200">Comentarios adicionales</label>
+          <textarea formControlName="comment" class="input-boost w-full" placeholder="Comentarios adicionales"></textarea>
+        </div>
+        
+        <div class="text-center mt-6">
+          <button type="submit" [disabled]="form2.invalid || loading2" class="w-full h-14 btn-boost">
+              <span *ngIf="!loading2">Enviar</span>
+              <span *ngIf="loading2">Enviando...</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </dialog>
 </div>
 
-<!--
-  .input-boost: bg-white/10, border, rounded, text-white, focus:ring-[#f05f02], etc.
-  .btn-boost: botón principal de la marca
--->
 <style>
-  /* Estilos básicos para input-boost para asegurar visibilidad */
+  /* Estilos para el scrollbar */
+  ::-webkit-scrollbar {
+    width: 12px; /* Ancho total de la barra, incluyendo el espacio */
+  }
+
+  /* Estilos para el "track" (el fondo de la barra de desplazamiento) */
+  ::-webkit-scrollbar-track {
+    background-color: transparent; /* Fondo transparente */
+  }
+
+  /* Estilos para el "thumb" (el control de la barra de desplazamiento) */
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(240, 95, 2, 0.4); /* Color naranja translúcido */
+    border-radius: 4px; /* Bordes redondeados */
+    border: 2px solid transparent; /* Crea la separación de 2px a cada lado */
+    background-clip: content-box; /* Asegura que el fondo no ocupe el área del borde */
+  }
+
+  /* Estilos para el "thumb" al pasar el mouse por encima */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(240, 95, 2, 0.7); /* Un poco más opaco al pasar el mouse */
+  }
+
+  /* Estilos para el background del modal */
+  dialog.bg-white\/10 {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Estilos para input-boost para asegurar visibilidad */
   .input-boost {
     background-color: rgba(255, 255, 255, 0.13); /* bg-white/10 mejorado */
     border: 1.5px solid #f05f02; /* Borde naranja boost */
@@ -302,8 +359,8 @@
     cursor: not-allowed;
     box-shadow: none;
   }
-  /* Estilos para radio buttons */
-  .form-radio {
+  /* Estilos para radio buttons y checkboxes */
+  .form-radio, .form-checkbox {
     width: 1.25rem;
     height: 1.25rem;
     accent-color: #f05f02;
@@ -324,6 +381,31 @@
     -moz-appearance: textfield;
     appearance: none;
   }
-  .ver-mas-btn { display: none; } /* Eliminar el botón personalizado anterior si existe */
+  /* Estilo para el botón de "Ver más" */
+  .ver-mas-btn {
+    width: 15rem;
+    height: 3.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px; /* rounded-full */
+    background-color: #1C1A1C;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    transition-property: all;
+    transition-duration: 500ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid transparent;
+  }
+  .ver-mas-btn:hover {
+    background-image: linear-gradient(to top right, #f05f02 0%, #ff8c00 100%);
+    box-shadow: 0 0 20px 4px rgba(240, 95, 2, 0.6);
+    transform: translateY(-4px) scale(1.05);
+  }
 </style>
-
