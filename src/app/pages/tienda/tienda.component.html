@@ -5,68 +5,275 @@ Notas para expansión futura:
 - Plataforma de dropshipping (Printify, Printful)
 -->
 
-<div class="min-h-screen bg-black text-white animate-fade-in font-montserrat">
-  <!-- Hero Section -->
-  <section class="flex flex-col items-center justify-center text-center py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
-    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl 3xl:text-8xl font-bold mb-6 tracking-tight text-white">BOOST SHOP</h1>
-    <p class="max-w-2xl text-lg sm:text-xl md:text-2xl 3xl:text-3xl mb-3 text-white/90">
-      Nuestra tienda de moda nace como un tributo al estilo de vida digital: funcional, futurista y conectado. Cada elemento está diseñado para creativos, nómadas digitales y visionarios que viven en movimiento, crean en la nube y piensan algorítmicamente.
-    </p>
-    <p class="max-w-2xl text-base sm:text-lg md:text-xl 3xl:text-2xl text-white/70">
-      No solo vestimos a la nueva generación de innovadores digitales, también los impulsamos. El 50% de nuestras ventas se destinan a empoderar a jóvenes y mentes brillantes en tecnología a través de nuestra fundación.
-    </p>
-  </section>
-
-  <!-- Filtros y Buscador -->
-  <section class="w-full px-3 sm:px-5 md:px-8 3xl:px-[10px] mb-10 animate-slide-up">
-    <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between w-full">
-      <!-- Filtros -->
-      <div class="flex flex-wrap gap-x-4 gap-y-2 justify-center sm:justify-start w-full sm:w-auto max-w-3xl">
-        <button *ngFor="let cat of categorias"
-          (click)="seleccionarCategoria(cat)"
-          [ngClass]="{
-            'bg-[#f05f02] text-white border-[#f05f02] shadow-[0_0_16px_2px_rgba(240,95,2,0.3)]': cat === categoriaSeleccionada,
-            'bg-white/5 text-white border-white/20': cat !== categoriaSeleccionada
-          }"
-          class="inline-flex items-center justify-center px-4 py-1.5 min-h-[40px] mb-2 rounded-full font-semibold border-2 border-[#f05f02] bg-transparent text-white shadow-none transition-all duration-300 ease-in-out hover:text-[#f05f02] hover:border-[#f05f02] hover:shadow-[0_0_16px_2px_rgba(240,95,2,0.3)] focus:text-[#f05f02] focus:border-[#f05f02] focus:shadow-[0_0_16px_2px_rgba(240,95,2,0.6)] min-w-[110px] leading-tight text-lg sm:text-xl 3xl:text-2xl">
-          {{cat}}
-        </button>
-      </div>
-      <!-- Buscador -->
-      <div class="relative w-full sm:w-72 flex justify-center sm:justify-end mt-2 sm:mt-0">
-        <label for="busqueda-tienda" class="sr-only">Buscar artículos</label>
-        <input id="busqueda-tienda" type="text" placeholder="Buscar artículos..." [(ngModel)]="busqueda" (input)="onBuscar($event)"
-          class="w-full pl-10 pr-4 py-2 rounded-full border border-[#f05f02] border-opacity-60 bg-transparent text-white placeholder:text-white/50 shadow focus:outline-none focus:border-[#f05f02] transition-all duration-300" />
-        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-[#f05f02] pointer-events-none">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z" /></svg>
-        </span>
-      </div>
+<div class="min-h-screen bg-black text-white animate-fade-in font-montserrat relative overflow-hidden">
+  <!-- Efectos de fondo sutiles -->
+  <div class="absolute inset-0 bg-gradient-to-br from-black via-black to-[#f05f02]/5"></div>
+  <div class="absolute top-20 left-10 w-72 h-72 bg-[#f05f02]/10 rounded-full blur-3xl animate-pulse"></div>
+  <div class="absolute bottom-20 right-10 w-96 h-96 bg-[#f05f02]/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
+  
+  <!-- Hero Section Mejorado -->
+  <section class="relative flex flex-col items-center justify-center text-center py-16 sm:py-20 px-4 sm:px-6 lg:px-8 z-10">
+    <div class="glass-effect p-8 sm:p-12 rounded-3xl backdrop-blur-xl border border-white/10 shadow-2xl">
+      <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl 3xl:text-8xl font-bold mb-6 tracking-tight text-white glow-text">
+        BOOST SHOP
+      </h1>
+      <div class="w-24 h-1 bg-gradient-to-r from-[#f05f02] to-[#f05f02]/60 rounded-full mb-6 mx-auto animate-pulse"></div>
+      <p class="max-w-3xl text-lg sm:text-xl md:text-2xl 3xl:text-3xl mb-4 text-white/90 leading-relaxed">
+        Nuestra tienda de moda nace como un tributo al estilo de vida digital: funcional, futurista y conectado. Cada elemento está diseñado para creativos, nómadas digitales y visionarios que viven en movimiento, crean en la nube y piensan algorítmicamente.
+      </p>
+      <p class="max-w-3xl text-base sm:text-lg md:text-xl 3xl:text-2xl text-white/70 leading-relaxed">
+        No solo vestimos a la nueva generación de innovadores digitales, también los impulsamos. El 50% de nuestras ventas se destinan a empoderar a jóvenes y mentes brillantes en tecnología a través de nuestra fundación.
+      </p>
     </div>
   </section>
 
-  <!-- Catálogo de productos -->
-  <section class="w-full px-3 sm:px-5 md:px-8 3xl:px-[10px]">
-    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl 3xl:text-6xl font-semibold mb-6 sm:mb-8 text-white">Artículos Disponibles</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
-      <div *ngFor="let producto of productosFiltrados" class="flex flex-col items-center bg-transparent rounded-xl p-4 sm:p-6 border border-white/10 transition-all duration-300 hover:shadow-xl hover:shadow-[#f05f02]/40 hover:scale-105 shadow-md rounded-2xl bg-white/5 backdrop-blur-lg animate-fade-in">
-        <img src="assets/images/global/Logo_Principal.png" alt="Imagen de producto" title="Imagen de producto" class="w-full h-48 sm:h-56 object-cover rounded-t-2xl" />
-        <div class="p-4 sm:p-6 flex flex-col gap-2 sm:gap-3 w-full">
-          <h3 class="text-lg sm:text-xl 3xl:text-2xl font-semibold tracking-wide text-white">{{producto.nombre}}</h3>
-          <span class="text-[#f05f02] font-bold text-2xl sm:text-3xl 3xl:text-4xl drop-shadow">${{producto.precio}}</span>
-          <p class="text-white/70 text-base sm:text-lg 3xl:text-xl mb-2">{{producto.descripcion}}</p>
-          <button class="w-60 h-11 px-4 py-1.5 rounded-full flex items-center justify-center bg-transparent text-white font-semibold text-lg sm:text-xl 3xl:text-2xl transition-all duration-500 ease-in-out border-2 border-[#f05f02] shadow-none hover:bg-[#f05f02] hover:text-white focus:bg-[#f05f02] focus:text-white focus:shadow-[0_0_16px_2px_rgba(240,95,2,0.6)]">
-            Ver más
+  <!-- Layout Principal con Panel Lateral -->
+  <div class="flex flex-col lg:flex-row gap-8 w-full px-3 sm:px-5 md:px-8 3xl:px-[10px]">
+    
+    <!-- Panel de Control Lateral (Derecha) -->
+    <div class="lg:w-80 flex-shrink-0 order-2 lg:order-2">
+      <div class="glass-effect p-6 rounded-2xl backdrop-blur-xl border border-white/10 shadow-xl sticky top-4">
+        <!-- Título del Panel -->
+        <div class="text-center mb-6">
+          <h3 class="text-xl font-bold text-white mb-2">Filtros</h3>
+          <div class="w-12 h-1 bg-gradient-to-r from-[#f05f02] to-[#f05f02]/60 rounded-full mx-auto animate-pulse"></div>
+        </div>
+        
+        <!-- Buscador -->
+        <div class="mb-6">
+          <h4 class="text-sm font-semibold text-white/80 mb-3">Buscar</h4>
+          <div class="relative">
+            <label for="busqueda-tienda" class="sr-only">Buscar artículos</label>
+            <input id="busqueda-tienda" type="text" placeholder="Buscar productos..." [(ngModel)]="busqueda" (input)="onBuscar($event)"
+              class="w-full pl-10 pr-4 py-3 rounded-full border-2 border-[#f05f02]/40 bg-white/5 text-white placeholder:text-white/50 shadow-lg focus:outline-none focus:border-[#f05f02] focus:shadow-[0_0_15px_rgba(240,95,2,0.3)] transition-all duration-300 backdrop-blur-sm text-sm" />
+            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-[#f05f02] pointer-events-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z" /></svg>
+            </span>
+          </div>
+        </div>
+
+        <!-- Selector de Moneda -->
+        <div class="mb-6">
+          <h4 class="text-sm font-semibold text-white/80 mb-3">Moneda</h4>
+          <select (change)="changeCurrency($event)" 
+                  [value]="getCurrencySymbol()"
+                  title="Seleccionar moneda"
+                  class="w-full px-4 py-3 rounded-full border-2 border-[#f05f02]/40 bg-white/5 text-white focus:outline-none focus:border-[#f05f02] focus:shadow-[0_0_15px_rgba(240,95,2,0.3)] transition-all duration-300 backdrop-blur-sm text-sm">
+            <option *ngFor="let currency of getAvailableCurrencies()" [value]="currency.code" class="bg-gray-800 text-white">
+              {{currency.symbol}} {{currency.name}}
+            </option>
+          </select>
+        </div>
+        
+        <!-- Categorías -->
+        <div>
+          <h4 class="text-sm font-semibold text-white/80 mb-3">Categorías</h4>
+          <div class="flex flex-col gap-2">
+            <button *ngFor="let cat of categorias; let i = index"
+              (click)="seleccionarCategoria(cat)"
+              [ngClass]="{
+                'category-btn-active': cat === categoriaSeleccionada,
+                'category-btn-inactive': cat !== categoriaSeleccionada
+              }"
+              class="category-filter-btn w-full text-left px-4 py-3 rounded-xl font-semibold border-2 transition-all duration-300 ease-in-out text-sm transform hover:scale-102 active:scale-98 relative overflow-hidden"
+              [style.animation-delay]="(i * 0.05) + 's'">
+              <span class="relative z-10">{{cat}}</span>
+              <div class="absolute inset-0 bg-gradient-to-r from-[#f05f02] to-[#f05f02]/80 opacity-0 transition-opacity duration-300"></div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Indicador del Carrito -->
+        <div class="mt-6 pt-6 border-t border-white/10">
+          <div class="flex items-center justify-between mb-3">
+            <h4 class="text-sm font-semibold text-white/80">Carrito</h4>
+            <div *ngIf="obtenerCantidadCarrito() > 0" class="bg-[#f05f02] text-white text-xs font-bold px-2 py-1 rounded-full">
+              {{obtenerCantidadCarrito()}}
+            </div>
+          </div>
+          
+          <div *ngIf="carrito.length > 0" class="space-y-2 max-h-32 overflow-y-auto">
+            <div *ngFor="let item of carrito" class="flex items-center justify-between text-xs text-white/70">
+              <span class="truncate">{{item.producto.nombre}}</span>
+              <span class="text-[#f05f02] font-semibold">x{{item.cantidad}}</span>
+            </div>
+            <div class="border-t border-white/10 pt-2 mt-2">
+              <div class="flex items-center justify-between text-sm">
+                <span class="text-white/80 font-semibold">Total:</span>
+                <span class="text-[#f05f02] font-bold">{{formatPrice(obtenerTotalCarrito())}}</span>
+              </div>
+            </div>
+          </div>
+          
+          <div *ngIf="carrito.length === 0" class="text-center text-white/50 text-xs py-4">
+            <svg class="w-6 h-6 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"></path>
+            </svg>
+            Carrito vacío
+          </div>
+
+          <!-- Botón para abrir carrito completo -->
+          <button *ngIf="carrito.length > 0" 
+                  (click)="abrirCarritoCompleto()"
+                  class="w-full mt-4 px-4 py-2 rounded-full bg-gradient-to-r from-[#f05f02] to-[#f05f02]/80 text-white font-semibold text-sm hover:shadow-[0_0_15px_rgba(240,95,2,0.4)] hover:scale-105 transition-all duration-300 flex items-center justify-center">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"></path>
+            </svg>
+            Ver Carrito Completo
           </button>
         </div>
       </div>
-      <div *ngIf="productosFiltrados.length === 0" class="col-span-full text-center text-white/60 py-12">
-        No se encontraron productos para esta búsqueda o categoría.
+    </div>
+    
+    <!-- Catálogo de Productos (Izquierda - Más Prominente) -->
+    <div class="flex-1 order-1 lg:order-1">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl 3xl:text-7xl font-bold text-white glow-text mb-4">
+          Productos
+        </h2>
+        <div class="w-32 h-1 bg-gradient-to-r from-[#f05f02] to-[#f05f02]/60 rounded-full mx-auto animate-pulse"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8">
+        <div *ngFor="let producto of productosFiltrados; let i = index" 
+             class="product-card group flex flex-col items-center bg-transparent rounded-2xl p-6 border border-white/10 transition-all duration-500 hover:shadow-2xl hover:shadow-[#f05f02]/30 hover:scale-105 shadow-lg bg-white/5 backdrop-blur-xl animate-fade-in overflow-hidden cursor-pointer"
+             (click)="abrirModalProducto(producto)"
+             [style.animation-delay]="(i * 0.1) + 's'">
+          
+          <!-- Imagen con overlay -->
+          <div class="relative w-full h-48 sm:h-56 overflow-hidden rounded-2xl mb-4 group-hover:scale-105 transition-transform duration-500">
+                      <img [src]="producto.imagen || 'assets/images/global/Logo_Principal.png'" 
+               [alt]="'Imagen de ' + producto.nombre" 
+               title="Imagen del producto" 
+               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="absolute top-3 right-3 bg-[#f05f02] text-white px-2 py-1 rounded-full text-xs font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+              Nuevo
+            </div>
+          </div>
+          
+          <div class="p-4 flex flex-col gap-3 w-full text-center">
+            <h3 class="text-lg sm:text-xl font-bold tracking-wide text-white group-hover:text-[#f05f02] transition-colors duration-300">
+              {{producto.nombre}}
+            </h3>
+            <span class="text-[#f05f02] font-bold text-2xl sm:text-3xl drop-shadow-lg glow-text">
+              {{formatPrice(producto.precio)}}
+            </span>
+            <p class="text-white/70 text-sm sm:text-base mb-3 leading-relaxed line-clamp-2">
+              {{producto.descripcion}}
+            </p>
+            <button class="w-full h-12 px-4 py-2 rounded-full flex items-center justify-center bg-gradient-to-r from-[#f05f02] to-[#f05f02]/80 text-white font-bold text-base transition-all duration-500 ease-in-out border-2 border-[#f05f02] shadow-lg hover:shadow-[0_0_20px_rgba(240,95,2,0.5)] hover:scale-105 active:scale-95 transform group-hover:from-[#f05f02]/90 group-hover:to-[#f05f02]">
+              <span class="mr-2">Ver más</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        
+        <div *ngIf="productosFiltrados.length === 0" class="col-span-full text-center py-16">
+          <div class="glass-effect p-8 rounded-2xl backdrop-blur-xl border border-white/10">
+            <svg class="w-16 h-16 text-white/40 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z"></path>
+            </svg>
+            <p class="text-white/60 text-lg">No se encontraron productos para esta búsqueda o categoría.</p>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
-
-  <!-- Nota/CTA final -->
-  <div class="text-base sm:text-lg 3xl:text-xl text-white/60 mt-12 text-center max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-    ¿Sabías que puedes vivir el estilo BOOST y al mismo tiempo crear futuro? El 50% de nuestras ventas apoyan nuestra fundación para formar jóvenes talentos digitales.
   </div>
+
+  <!-- Modal de Producto -->
+  <div *ngIf="productoSeleccionado" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in">
+    <div class="glass-effect max-w-4xl w-full max-h-[90vh] overflow-y-auto rounded-3xl p-8 border border-white/10 shadow-2xl animate-scale-in">
+      <!-- Botón de cerrar -->
+      <button (click)="cerrarModal()" class="absolute top-4 right-4 text-white/70 hover:text-white transition-colors duration-300 z-10" title="Cerrar modal">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Imagen del producto -->
+        <div class="relative">
+          <img [src]="productoSeleccionado.imagen || 'assets/images/global/Logo_Principal.png'" 
+               [alt]="'Imagen de ' + productoSeleccionado.nombre" 
+               title="Imagen del producto"
+               class="w-full h-80 object-cover rounded-2xl shadow-lg" />
+          <div class="absolute top-4 left-4 bg-[#f05f02] text-white px-3 py-1 rounded-full text-sm font-semibold">
+            {{productoSeleccionado.categoria}}
+          </div>
+        </div>
+        
+        <!-- Información del producto -->
+        <div class="flex flex-col justify-between">
+          <div>
+            <h2 class="text-3xl font-bold text-white mb-4">{{productoSeleccionado.nombre}}</h2>
+            <div class="text-[#f05f02] font-bold text-4xl mb-6 glow-text">{{formatPrice(productoSeleccionado.precio)}}</div>
+            <p class="text-white/80 text-lg leading-relaxed mb-6">{{productoSeleccionado.descripcion}}</p>
+            
+            <!-- Características adicionales (preparado para edición) -->
+            <div class="space-y-3 mb-8">
+              <div class="flex items-center text-white/70">
+                <svg class="w-5 h-5 mr-3 text-[#f05f02]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Envío gratuito</span>
+              </div>
+              <div class="flex items-center text-white/70">
+                <svg class="w-5 h-5 mr-3 text-[#f05f02]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Garantía de calidad</span>
+              </div>
+              <div class="flex items-center text-white/70">
+                <svg class="w-5 h-5 mr-3 text-[#f05f02]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Devolución en 30 días</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Botones de acción -->
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button (click)="comprarAhora()" class="flex-1 h-14 px-6 py-3 rounded-full flex items-center justify-center bg-gradient-to-r from-[#f05f02] to-[#f05f02]/80 text-white font-bold text-lg transition-all duration-500 ease-in-out border-2 border-[#f05f02] shadow-lg hover:shadow-[0_0_25px_rgba(240,95,2,0.5)] hover:scale-105 active:scale-95 transform">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"></path>
+              </svg>
+              Comprar con Stripe
+            </button>
+            <button (click)="agregarAlCarrito()" class="flex-1 h-14 px-6 py-3 rounded-full flex items-center justify-center bg-transparent text-white font-bold text-lg transition-all duration-500 ease-in-out border-2 border-[#f05f02] shadow-lg hover:bg-[#f05f02]/10 hover:shadow-[0_0_20px_rgba(240,95,2,0.3)] hover:scale-105 active:scale-95 transform">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"></path>
+              </svg>
+              Añadir al Carrito
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal del Carrito Completo -->
+  <app-carrito-modal 
+    [mostrar]="mostrarCarritoCompleto"
+    [carrito]="carrito"
+    (cerrarModal)="cerrarCarritoCompleto()"
+    (actualizarCarrito)="actualizarCarrito($event)"
+    (comprarStripe)="comprarCarritoConStripe($event)">
+  </app-carrito-modal>
+
+  <!-- CTA Final Mejorado -->
+  <section class="relative mt-16 mb-8 z-10">
+    <div class="glass-effect p-8 sm:p-12 rounded-3xl backdrop-blur-xl border border-white/10 shadow-2xl text-center max-w-4xl mx-auto">
+      <div class="w-16 h-1 bg-gradient-to-r from-[#f05f02] to-[#f05f02]/60 rounded-full mx-auto mb-6 animate-pulse"></div>
+      <p class="text-lg sm:text-xl 3xl:text-2xl text-white/80 leading-relaxed mb-4">
+        ¿Sabías que puedes vivir el estilo BOOST y al mismo tiempo crear futuro?
+      </p>
+      <p class="text-base sm:text-lg 3xl:text-xl text-[#f05f02] font-semibold">
+        El 50% de nuestras ventas apoyan nuestra fundación para formar jóvenes talentos digitales.
+      </p>
+    </div>
+  </section>
 </div>

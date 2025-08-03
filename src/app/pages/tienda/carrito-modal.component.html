@@ -1,0 +1,113 @@
+<div *ngIf="mostrar" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in">
+  <div class="glass-effect max-w-2xl w-full max-h-[90vh] overflow-y-auto rounded-3xl p-8 border border-white/10 shadow-2xl animate-scale-in">
+    <!-- Header -->
+    <div class="flex items-center justify-between mb-6">
+      <h2 class="text-2xl font-bold text-white">Tu Carrito</h2>
+      <button (click)="cerrar()" class="text-white/70 hover:text-white transition-colors duration-300" title="Cerrar carrito">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Lista de productos -->
+    <div *ngIf="carrito.length > 0" class="space-y-4 mb-6">
+      <div *ngFor="let item of carrito; let i = index" class="flex items-center gap-4 p-4 bg-white/5 rounded-xl border border-white/10">
+        <!-- Imagen -->
+        <img [src]="item.producto.imagen || 'assets/images/global/Logo_Principal.png'" 
+             [alt]="'Imagen de ' + item.producto.nombre" 
+             title="Imagen del producto"
+             class="w-16 h-16 object-cover rounded-lg" />
+        
+        <!-- Información -->
+        <div class="flex-1">
+          <h3 class="text-white font-semibold">{{item.producto.nombre}}</h3>
+          <p class="text-white/60 text-sm">{{item.producto.categoria}}</p>
+          <p class="text-[#f05f02] font-bold">{{formatPrice(item.producto.precio)}}</p>
+        </div>
+        
+        <!-- Controles de cantidad -->
+        <div class="flex items-center gap-2">
+          <button (click)="decrementarCantidad(i)" 
+                  class="w-8 h-8 rounded-full bg-[#f05f02]/20 text-[#f05f02] hover:bg-[#f05f02]/40 transition-colors duration-300 flex items-center justify-center"
+                  title="Reducir cantidad">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
+            </svg>
+          </button>
+          <span class="text-white font-bold min-w-[2rem] text-center">{{item.cantidad}}</span>
+          <button (click)="incrementarCantidad(i)" 
+                  class="w-8 h-8 rounded-full bg-[#f05f02]/20 text-[#f05f02] hover:bg-[#f05f02]/40 transition-colors duration-300 flex items-center justify-center"
+                  title="Aumentar cantidad">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+            </svg>
+          </button>
+        </div>
+        
+        <!-- Subtotal -->
+        <div class="text-right">
+          <p class="text-[#f05f02] font-bold">{{formatPrice(item.producto.precio * item.cantidad)}}</p>
+        </div>
+        
+        <!-- Eliminar -->
+        <button (click)="eliminarItem(i)" 
+                class="text-white/50 hover:text-red-400 transition-colors duration-300"
+                title="Eliminar producto">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Carrito vacío -->
+    <div *ngIf="carrito.length === 0" class="text-center py-12">
+      <svg class="w-16 h-16 text-white/40 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"></path>
+      </svg>
+      <p class="text-white/60 text-lg mb-4">Tu carrito está vacío</p>
+      <button (click)="cerrar()" class="px-6 py-3 bg-[#f05f02] text-white rounded-full font-semibold hover:bg-[#f05f02]/80 transition-colors duration-300">
+        Continuar Comprando
+      </button>
+    </div>
+
+    <!-- Resumen y botones -->
+    <div *ngIf="carrito.length > 0" class="border-t border-white/10 pt-6">
+      <!-- Resumen -->
+      <div class="space-y-2 mb-6">
+        <div class="flex justify-between text-white/80">
+          <span>Subtotal:</span>
+          <span>{{formatPrice(obtenerSubtotal())}}</span>
+        </div>
+        <div class="flex justify-between text-white/80">
+          <span>Envío:</span>
+          <span class="text-green-400">Gratis</span>
+        </div>
+        <div class="flex justify-between text-white/80">
+          <span>Impuestos:</span>
+          <span>{{formatPrice(obtenerImpuestos())}}</span>
+        </div>
+        <div class="flex justify-between text-xl font-bold text-white border-t border-white/10 pt-2">
+          <span>Total:</span>
+          <span class="text-[#f05f02]">{{formatPrice(obtenerTotal())}}</span>
+        </div>
+      </div>
+
+      <!-- Botones de acción -->
+      <div class="flex flex-col sm:flex-row gap-4">
+        <button (click)="continuarComprando()" 
+                class="flex-1 px-6 py-3 rounded-full border-2 border-[#f05f02] text-[#f05f02] font-bold hover:bg-[#f05f02]/10 transition-all duration-300">
+          Continuar Comprando
+        </button>
+        <button (click)="comprarConStripe()" 
+                class="flex-1 px-6 py-3 rounded-full bg-gradient-to-r from-[#f05f02] to-[#f05f02]/80 text-white font-bold hover:shadow-[0_0_25px_rgba(240,95,2,0.5)] hover:scale-105 transition-all duration-300 flex items-center justify-center">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"></path>
+          </svg>
+          Comprar con Stripe
+        </button>
+      </div>
+    </div>
+  </div>
+</div> 

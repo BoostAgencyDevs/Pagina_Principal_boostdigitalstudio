@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { TiendaComponent } from './tienda.component';
+import { CarritoModalComponent } from './carrito-modal.component';
 
 @NgModule({
-  declarations: [TiendaComponent],
+  declarations: [TiendaComponent, CarritoModalComponent],
   imports: [
     CommonModule,
     FormsModule,

@@ -93,6 +93,76 @@
   - Sin efectos: Solo color naranja simple (`text-[#f05f02]`)
   - Texto: "Ready to boost your business?"
 
+### PÁGINA DE TIENDA - ESTRUCTURA ACTUAL FINAL
+- **Panel de Control Lateral (Derecha)**:
+  - Ancho: `lg:w-80 flex-shrink-0 order-2 lg:order-2`
+  - Contenedor: `glass-effect p-6 rounded-2xl backdrop-blur-xl border border-white/10 shadow-xl sticky top-4`
+  - **Secciones del panel**:
+    - Título: "Filtros" con línea decorativa naranja
+    - Buscador: Input con icono de lupa y efectos hover
+    - **Selector de Moneda**: Dropdown con monedas soportadas (USD, COP, EUR, MXN, ARS)
+    - Categorías: Botones con efectos hover y sonidos
+    - Indicador del Carrito: Cantidad, lista de productos, total
+    - Botón "Ver Carrito Completo": Abre modal del carrito
+
+- **Catálogo de Productos (Izquierda)**:
+  - Layout: `flex-1 order-1 lg:order-1`
+  - Grid: `grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8`
+  - **Tarjetas de productos**:
+    - Efectos hover: `hover:scale-105`, `hover:shadow-[#f05f02]/30`
+    - Imágenes: `w-full h-48 sm:h-56 object-cover rounded-2xl`
+    - Precios: Formateados según moneda seleccionada
+    - Botón "Ver más": Abre modal de producto
+
+- **Modal de Producto**:
+  - Overlay: `fixed inset-0 bg-black/80 backdrop-blur-sm z-50`
+  - Contenido: `glass-effect max-w-4xl w-full max-h-[90vh]`
+  - Layout: `grid-cols-1 lg:grid-cols-2 gap-8`
+  - **Secciones**:
+    - Imagen del producto con categoría
+    - Información: Nombre, precio, descripción completa
+    - Características: Envío gratuito, garantía, devolución
+    - Botones: "Comprar con Stripe" y "Añadir al Carrito"
+
+- **Modal del Carrito Completo**:
+  - Componente separado: `CarritoModalComponent`
+  - **Funcionalidades**:
+    - Lista de productos con imágenes y precios
+    - Controles de cantidad (+ y - centrados)
+    - Eliminación individual de productos
+    - Cálculo automático: Subtotal, impuestos (19%), total
+    - Botones: "Continuar Comprando" y "Comprar con Stripe"
+
+### SISTEMA DE MONEDAS - ESTRUCTURA ACTUAL
+- **Servicio**: `CurrencyService` con detección automática
+- **Monedas soportadas**:
+  - **USD**: Dólar Estadounidense - $1.00
+  - **COP**: Peso Colombiano - $4,000,000 (con separadores)
+  - **EUR**: Euro - €0,85 (con coma decimal)
+  - **MXN**: Peso Mexicano - $18,000 (con separadores)
+  - **ARS**: Peso Argentino - $100,000 (con separadores)
+
+- **Detección automática por idioma**:
+  - `es-CO`: COP (Colombia)
+  - `es-MX`: MXN (México)
+  - `es-AR`: ARS (Argentina)
+  - `es`: COP (por defecto)
+  - `en-US`, `en`: USD
+  - Otros: EUR
+
+- **Persistencia**: Moneda guardada en `localStorage`
+- **Formato localizado**: Separadores de miles y decimales según región
+
+### INTEGRACIÓN CON STRIPE - ESTRUCTURA ACTUAL
+- **Botones de compra**: En modal de producto y carrito completo
+- **Simulación completa**: Preparado para conexión real
+- **Datos estructurados**:
+  - Productos con nombres, descripciones, imágenes
+  - Cantidades y precios
+  - Metadatos de orden
+- **URLs configuradas**: Success y cancel
+- **Documentación**: `STRIPE_INTEGRATION.md` y `STRIPE_SETUP.md`
+
 ### TIPOGRAFÍA MONTSEXRAT - APLICADA GLOBALMENTE
 - **Google Fonts importado**: `src/index.html` con peso 900 incluido
 - **Aplicación por componente**: Cada componente tiene su propio archivo CSS
@@ -130,6 +200,8 @@
 - Secciones completas
 - Funcionalidades establecidas
 - Iconos SVG de redes sociales
+- Sistema de carrito y monedas de la tienda
+- Componentes de modales y servicios
 
 ### ✅ **MANTENER SIEMPRE:**
 - Responsividad en todas las pantallas (`sm:`, `md:`, `lg:`, `xl:`, `2xl:`, `3xl:`)
@@ -138,6 +210,8 @@
 - Efectos hover y transiciones
 - Estructura de grid y flexbox
 - Tipografía Montserrat en todos los componentes
+- Sistema de monedas y carrito de la tienda
+- Efectos de sonido profesionales
 
 ### ✅ **RESPETAR:**
 - Breakpoints de Tailwind CSS
@@ -146,6 +220,8 @@
 - Animaciones y transiciones
 - Estados interactivos
 - Iconos SVG nativos para redes sociales
+- Estructura de componentes de la tienda
+- Servicios de monedas y carrito
 
 ### ✅ **OPTIMIZACIONES APLICADAS:**
 - Ancho máximo progresivo para pantallas grandes
@@ -154,6 +230,8 @@
 - Mantenimiento de estructura en pantallas pequeñas y medianas
 - Corrección de overflow en tablets mini
 - Iconos de redes sociales convertidos a SVG nativos
+- Sistema completo de tienda con carrito y monedas
+- Integración preparada para Stripe
 
 ### ✅ **ESTRUCTURA DEL FOOTER FINAL:**
 - **Grid de 3 columnas** con enlaces rápidos en el centro
@@ -163,6 +241,16 @@
 - **Iconos SVG nativos** para redes sociales (Facebook, Twitter, Instagram)
 - **Sin línea divisoria** entre secciones
 - **Estructura equilibrada** y profesional
+
+### ✅ **ESTRUCTURA DE LA TIENDA FINAL:**
+- **Panel lateral derecho** con filtros, búsqueda, selector de moneda y carrito
+- **Catálogo de productos** con tarjetas interactivas y efectos hover
+- **Modal de producto** con información completa y botones de compra
+- **Modal de carrito completo** con gestión de cantidades y totales
+- **Sistema de monedas** con detección automática y formato localizado
+- **Integración con Stripe** preparada para conexión real
+- **Efectos de sonido** profesionales para mejor UX
+- **Accesibilidad completa** con alt text y title attributes
 
 ## ESTADO ACTUAL
 - **Fecha**: Diciembre 2024
@@ -179,3 +267,7 @@
   - ✅ Todos los elementos están optimizados y alineados correctamente
   - ✅ El footer tiene una estructura de 3 columnas con enlaces rápidos centrados y efectos hover elegantes
   - ✅ Se eliminó el espacio vacío excesivo en pantallas grandes (1920px+) mediante el ajuste de anchos máximos progresivos
+  - ✅ **Sistema completo de tienda implementado** con carrito, monedas y Stripe
+  - ✅ **Efectos de sonido profesionales** añadidos para mejor experiencia de usuario
+  - ✅ **Accesibilidad mejorada** con alt text y title attributes en todas las imágenes
+  - ✅ **Botones del carrito centrados** y sistema de monedas por ubicación funcionando

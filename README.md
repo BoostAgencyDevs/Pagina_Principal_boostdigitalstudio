@@ -10,6 +10,69 @@ Frontend
 
 ---
 
+## 🛒 MEJORAS IMPLEMENTADAS EN LA TIENDA (Agosto 2025)
+
+### **Sistema de Carrito Completo**
+- ✅ **Modal de carrito separado**: Componente independiente con HTML, CSS y TS
+- ✅ **Gestión de cantidades**: Botones + y - perfectamente centrados
+- ✅ **Persistencia en localStorage**: El carrito se mantiene entre sesiones
+- ✅ **Cálculo automático**: Subtotal, impuestos (19% IVA) y total
+- ✅ **Eliminación de productos**: Botón de eliminar individual
+- ✅ **Carrito vacío**: Mensaje informativo cuando no hay productos
+
+### **Sistema de Monedas por Ubicación**
+- ✅ **Detección automática**: Basada en el idioma del navegador
+- ✅ **Monedas soportadas**: USD, COP (Colombia), EUR, MXN (México), ARS (Argentina)
+- ✅ **Selector de moneda**: En el panel de control lateral
+- ✅ **Formato localizado**: Separadores de miles y decimales según región
+- ✅ **Persistencia**: La moneda seleccionada se guarda en localStorage
+
+#### **Detección Automática por País:**
+- **Español (es-CO)**: Peso Colombiano (COP) - $4,000,000
+- **Español (es-MX)**: Peso Mexicano (MXN) - $18,000
+- **Español (es-AR)**: Peso Argentino (ARS) - $100,000
+- **Español (es)**: Por defecto Peso Colombiano (COP)
+- **Inglés**: Dólar Estadounidense (USD) - $1.00
+- **Otros**: Euro (EUR) - €0,85
+
+### **Integración con Stripe**
+- ✅ **Botones de compra**: En modal de producto y carrito completo
+- ✅ **Simulación completa**: Preparado para conexión real con Stripe
+- ✅ **Datos estructurados**: Productos, cantidades, metadatos
+- ✅ **URLs de retorno**: Success y cancel configuradas
+- ✅ **Documentación**: Archivos STRIPE_INTEGRATION.md y STRIPE_SETUP.md
+
+### **Mejoras de Accesibilidad**
+- ✅ **Alt text en imágenes**: Descriptivo y accesible
+- ✅ **Title attributes**: En botones e imágenes
+- ✅ **Navegación por teclado**: Todos los elementos son accesibles
+- ✅ **Contraste adecuado**: Cumple estándares WCAG
+
+### **Efectos de Sonido Profesionales**
+- ✅ **Sonidos elegantes**: Usando Web Audio API
+- ✅ **Feedback auditivo**: Para categorías, modales, carrito y compras
+- ✅ **Sonido de gota**: Para selección de categorías
+- ✅ **Sonidos de compra**: Para confirmación de transacciones
+
+### **Estructura Técnica Implementada**
+
+#### **Componentes Creados:**
+- `CarritoModalComponent`: Modal completo del carrito
+- `CurrencyService`: Servicio de gestión de monedas
+
+#### **Archivos de Documentación:**
+- `STRIPE_INTEGRATION.md`: Documentación completa de integración
+- `STRIPE_SETUP.md`: Guía rápida de configuración
+
+#### **Funcionalidades Clave:**
+- **Panel lateral derecho**: Filtros, búsqueda, selector de moneda, carrito
+- **Modal de producto**: Imagen, descripción, botones de compra
+- **Carrito completo**: Gestión de cantidades, eliminación, totales
+- **Responsive design**: Funciona en todas las pantallas
+- **Animaciones**: Efectos suaves y profesionales
+
+---
+
 ## 🎨 OPTIMIZACIONES DE RESPONSIVE DESIGN (ÚLTIMAS ACTUALIZACIONES)
 
 ### **Metodología Desktop-First Implementada**
@@ -39,6 +102,7 @@ Frontend
 - ✅ **Inicio:** Todas las secciones (Hero, Diseño Estratégico, Futuro Digital, Slogan + Botones, Blog, Estadísticas, Newsletter)
 - ✅ **Layout:** Alineación consistente entre header, body y footer
 - ✅ **Botones:** Estandarización de tamaños y efectos hover
+- ✅ **Tienda:** Sistema completo de carrito, monedas y Stripe
 
 ### **Características Técnicas**
 - **HTML Structure Preservation:** Solo se modificaron clases CSS, sin alterar estructura
@@ -90,7 +154,7 @@ Crea (o edita) el archivo `netlify.toml` en la raíz del proyecto o dentro de `/
 ### a) Subida manual
 
 1. Inicia sesión en [Netlify](https://app.netlify.com/).
-2. Haz clic en “Add new site” > “Deploy manually”.
+2. Haz clic en "Add new site" > "Deploy manually".
 3. Sube el contenido completo de la carpeta `dist/<nombre-del-proyecto>` (después de ejecutar el build).
 
 ### b) Conexión automática vía GitHub
@@ -212,7 +276,43 @@ Puedes encontrar esta configuración en:
 
 **¡No es necesario hacer ningún despliegue manual!** Simplemente sube tus cambios a la rama `main` y Netlify se encargará del resto.
 
+---
 
+## Configuración de Stripe (Opcional)
+
+Para activar los pagos en la tienda, sigue estos pasos:
+
+### 1. Instalar Dependencias
+```bash
+npm install @stripe/stripe-js
+```
+
+### 2. Configurar Variables de Entorno
+Crea `src/environments/stripe.ts`:
+```typescript
+export const STRIPE_CONFIG = {
+  publishableKey: 'pk_test_TU_CLAVE_AQUI',
+  currency: 'usd',
+  successUrl: 'https://tudominio.com/success',
+  cancelUrl: 'https://tudominio.com/tienda'
+};
+```
+
+### 3. Backend (Node.js)
+Crea un servidor simple para manejar las sesiones de Stripe:
+```javascript
+const express = require('express');
+const stripe = require('stripe')('sk_test_TU_CLAVE_SECRETA');
+
+app.post('/api/create-checkout-session', async (req, res) => {
+  // Lógica de creación de sesión
+});
+```
+
+### 4. Documentación Completa
+Consulta los archivos:
+- `STRIPE_INTEGRATION.md`: Documentación técnica completa
+- `STRIPE_SETUP.md`: Guía rápida de configuración
 
 ¿Dudas? Consulta este README o contacta al equipo de desarrollo.
 
