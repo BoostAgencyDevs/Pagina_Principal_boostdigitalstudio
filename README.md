@@ -316,3 +316,10 @@ Consulta los archivos:
 
 ¿Dudas? Consulta este README o contacta al equipo de desarrollo.
 
+
+## Cambios recientes (Junio 2024)
+
+- Ajuste en la Franja 1 de la página de inicio para tablets pequeñas: imagen y texto más pequeños, margen eliminado, y luego texto ligeramente aumentado para mejor legibilidad. No se modificaron móviles ni desktop.
+- Panel de control de la tienda ahora aparece al inicio en móviles. Footer de la tienda optimizado para tablets mini con diseño especial. Desktop y móviles no fueron modificados.
+- Todos los cambios documentados en `DOCUMENTACION_BOOST_AGENCY.md`.
+

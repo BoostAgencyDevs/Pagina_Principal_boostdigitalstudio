@@ -271,3 +271,21 @@
   - ✅ **Efectos de sonido profesionales** añadidos para mejor experiencia de usuario
   - ✅ **Accesibilidad mejorada** con alt text y title attributes en todas las imágenes
   - ✅ **Botones del carrito centrados** y sistema de monedas por ubicación funcionando
+
+## CAMBIOS Y OPTIMIZACIONES RECIENTES (JUNIO 2024)
+
+- **Página de Inicio - Franja 1 (Hero Principal):**
+  - Ajuste específico para tablets pequeñas (sm y md):
+    - Imagen del hero ahora es más pequeña (`sm:w-64 sm:h-52`, `md:w-80 md:h-64`).
+    - Texto del hero reducido y luego aumentado ligeramente para mejor legibilidad (`sm:text-4xl`, `md:text-5xl`, párrafo `sm:text-lg`, `md:text-xl`).
+    - Se eliminó el margen lateral de la imagen en tablets pequeñas para que el texto se vea más pegado y compacto.
+    - No se modificaron móviles ni desktop.
+
+- **Página de Tienda:**
+  - Panel de control (filtros, moneda, carrito, categorías) ahora aparece al inicio en móviles para mejor UX.
+  - En tablets mini, el footer tiene un diseño especial de una sola columna y secciones horizontales para evitar desarreglos.
+  - No se modificaron otras pantallas.
+
+- **Reglas estrictas seguidas:**
+  - No se alteró la estructura ni el diseño de desktop ni móviles fuera de los breakpoints indicados.
+  - Todos los cambios son reversibles y están documentados aquí.
