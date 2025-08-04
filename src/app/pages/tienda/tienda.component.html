@@ -30,8 +30,102 @@ Notas para expansión futura:
   <!-- Layout Principal con Panel Lateral -->
   <div class="flex flex-col lg:flex-row gap-8 w-full px-3 sm:px-5 md:px-8 3xl:px-[10px]">
     
+    <!-- Categorías para Móviles (Solo visible en pantallas pequeñas) -->
+    <div class="lg:hidden mb-6">
+      <div class="glass-effect p-4 rounded-2xl backdrop-blur-xl border border-white/10 shadow-xl">
+        <div class="text-center mb-4">
+          <h3 class="text-lg font-bold text-white mb-2">Filtros</h3>
+          <div class="w-12 h-1 bg-gradient-to-r from-[#f05f02] to-[#f05f02]/60 rounded-full mx-auto animate-pulse"></div>
+        </div>
+        
+        <!-- Buscador -->
+        <div class="mb-4">
+          <h4 class="text-sm font-semibold text-white/80 mb-2">Buscar</h4>
+          <div class="relative">
+            <label for="busqueda-tienda-mobile" class="sr-only">Buscar artículos</label>
+            <input id="busqueda-tienda-mobile" type="text" placeholder="Buscar productos..." [(ngModel)]="busqueda" (input)="onBuscar($event)"
+              class="w-full pl-10 pr-4 py-3 rounded-full border-2 border-[#f05f02]/40 bg-white/5 text-white placeholder:text-white/50 shadow-lg focus:outline-none focus:border-[#f05f02] focus:shadow-[0_0_15px_rgba(240,95,2,0.3)] transition-all duration-300 backdrop-blur-sm text-sm" />
+            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-[#f05f02] pointer-events-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z" /></svg>
+            </span>
+          </div>
+        </div>
+
+        <!-- Selector de Moneda -->
+        <div class="mb-4">
+          <h4 class="text-sm font-semibold text-white/80 mb-2">Moneda</h4>
+          <select (change)="changeCurrency($event)" 
+                  [value]="getCurrencySymbol()"
+                  title="Seleccionar moneda"
+                  class="w-full px-4 py-3 rounded-full border-2 border-[#f05f02]/40 bg-white/5 text-white focus:outline-none focus:border-[#f05f02] focus:shadow-[0_0_15px_rgba(240,95,2,0.3)] transition-all duration-300 backdrop-blur-sm text-sm">
+            <option *ngFor="let currency of getAvailableCurrencies()" [value]="currency.code" class="bg-gray-800 text-white">
+              {{currency.symbol}} {{currency.name}}
+            </option>
+          </select>
+        </div>
+        
+        <!-- Categorías -->
+        <div class="mb-4">
+          <h4 class="text-sm font-semibold text-white/80 mb-2">Categorías</h4>
+          <div class="flex flex-wrap gap-2 justify-center">
+            <button *ngFor="let cat of categorias; let i = index"
+              (click)="seleccionarCategoria(cat)"
+              [ngClass]="{
+                'category-btn-active': cat === categoriaSeleccionada,
+                'category-btn-inactive': cat !== categoriaSeleccionada
+              }"
+              class="category-filter-btn px-4 py-2 rounded-xl font-semibold border-2 transition-all duration-300 ease-in-out text-sm transform hover:scale-102 active:scale-98 relative overflow-hidden"
+              [style.animation-delay]="(i * 0.05) + 's'">
+              <span class="relative z-10">{{cat}}</span>
+              <div class="absolute inset-0 bg-gradient-to-r from-[#f05f02] to-[#f05f02]/80 opacity-0 transition-opacity duration-300"></div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Indicador del Carrito -->
+        <div class="pt-4 border-t border-white/10">
+          <div class="flex items-center justify-between mb-3">
+            <h4 class="text-sm font-semibold text-white/80">Carrito</h4>
+            <div *ngIf="obtenerCantidadCarrito() > 0" class="bg-[#f05f02] text-white text-xs font-bold px-2 py-1 rounded-full">
+              {{obtenerCantidadCarrito()}}
+            </div>
+          </div>
+          
+          <div *ngIf="carrito.length > 0" class="space-y-2 max-h-24 overflow-y-auto mb-3">
+            <div *ngFor="let item of carrito" class="flex items-center justify-between text-xs text-white/70">
+              <span class="truncate">{{item.producto.nombre}}</span>
+              <span class="text-[#f05f02] font-semibold">x{{item.cantidad}}</span>
+            </div>
+            <div class="border-t border-white/10 pt-2 mt-2">
+              <div class="flex items-center justify-between text-sm">
+                <span class="text-white/80 font-semibold">Total:</span>
+                <span class="text-[#f05f02] font-bold">{{formatPrice(obtenerTotalCarrito())}}</span>
+              </div>
+            </div>
+          </div>
+          
+          <div *ngIf="carrito.length === 0" class="text-center text-white/50 text-xs py-2 mb-3">
+            <svg class="w-4 h-4 mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"></path>
+            </svg>
+            Carrito vacío
+          </div>
+
+          <!-- Botón para abrir carrito completo -->
+          <button *ngIf="carrito.length > 0" 
+                  (click)="abrirCarritoCompleto()"
+                  class="w-full px-4 py-2 rounded-full bg-gradient-to-r from-[#f05f02] to-[#f05f02]/80 text-white font-semibold text-sm hover:shadow-[0_0_15px_rgba(240,95,2,0.4)] hover:scale-105 transition-all duration-300 flex items-center justify-center">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"></path>
+            </svg>
+            Ver Carrito Completo
+          </button>
+        </div>
+      </div>
+    </div>
+    
     <!-- Panel de Control Lateral (Derecha) -->
-    <div class="lg:w-80 flex-shrink-0 order-2 lg:order-2">
+    <div class="hidden lg:block lg:w-80 flex-shrink-0 order-2 lg:order-2">
       <div class="glass-effect p-6 rounded-2xl backdrop-blur-xl border border-white/10 shadow-xl sticky top-4">
         <!-- Título del Panel -->
         <div class="text-center mb-6">
@@ -65,8 +159,8 @@ Notas para expansión futura:
           </select>
         </div>
         
-        <!-- Categorías -->
-        <div>
+        <!-- Categorías (Ocultas en móviles, visibles en desktop) -->
+        <div class="hidden lg:block">
           <h4 class="text-sm font-semibold text-white/80 mb-3">Categorías</h4>
           <div class="flex flex-col gap-2">
             <button *ngFor="let cat of categorias; let i = index"
