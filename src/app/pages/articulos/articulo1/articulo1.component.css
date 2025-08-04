@@ -1,0 +1,187 @@
+/* Estilos para el Artículo 1 */
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Efectos de glassmorphism */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.05);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out;
+}
+
+.slide-left {
+  animation: slideLeft 0.8s ease-out;
+}
+
+.slide-right {
+  animation: slideRight 0.8s ease-out;
+}
+
+/* Estilos para el contenido del artículo */
+.prose {
+  color: white;
+}
+
+.prose h2,
+.prose h3,
+.prose h4 {
+  color: white;
+  font-weight: bold;
+}
+
+.prose p {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.8;
+}
+
+.prose strong {
+  color: white;
+}
+
+.prose a {
+  color: #f05f02;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.prose a:hover {
+  color: #d94f01;
+}
+
+/* Efectos hover para botones */
+button:hover,
+a:hover {
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .prose {
+    font-size: 1rem;
+  }
+  
+  .prose h2 {
+    font-size: 1.5rem;
+  }
+  
+  .prose h3 {
+    font-size: 1.25rem;
+  }
+}
+
+/* Efectos de sombra dinámicos */
+.shadow-dynamic {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.shadow-dynamic:hover {
+  box-shadow: 0 10px 15px -3px rgba(240, 95, 2, 0.1), 0 4px 6px -2px rgba(240, 95, 2, 0.05);
+}
+
+/* Mejoras para accesibilidad */
+button:focus,
+a:focus {
+  outline: 2px solid rgba(240, 95, 2, 0.5);
+  outline-offset: 2px;
+}
+
+/* Efectos de transición suaves */
+* {
+  transition: all 0.3s ease;
+}
+
+/* Estilos específicos para el sidebar */
+aside {
+  position: sticky;
+  top: 2rem;
+}
+
+/* Efectos de hover para artículos relacionados */
+.article-card {
+  transition: all 0.3s ease;
+}
+
+.article-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(240, 95, 2, 0.2);
+}
+
+/* Estilos para el breadcrumb */
+.breadcrumb-item {
+  transition: color 0.3s ease;
+}
+
+.breadcrumb-item:hover {
+  color: #f05f02;
+}
+
+/* Efectos de glow para elementos importantes */
+.glow-text {
+  text-shadow: 0 0 10px rgba(240, 95, 2, 0.3), 0 0 20px rgba(240, 95, 2, 0.2);
+}
+
+/* Estilos para el botón de descarga */
+.download-btn {
+  background: linear-gradient(135deg, #f05f02, #d94f01);
+  transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+  background: linear-gradient(135deg, #d94f01, #f05f02);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(240, 95, 2, 0.3);
+}
+
+/* Estilos para el botón de contacto */
+.contact-btn {
+  background: linear-gradient(135deg, #f05f02, #d94f01);
+  transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+  background: linear-gradient(135deg, #d94f01, #f05f02);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(240, 95, 2, 0.3);
+} 

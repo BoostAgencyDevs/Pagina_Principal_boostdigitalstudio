@@ -1,0 +1,107 @@
+<div class="min-h-screen bg-black text-white">
+  <header class="bg-gradient-to-br from-black via-gray-900 to-[#f05f02]/20 py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <nav class="mb-8">
+        <ol class="flex items-center space-x-2 text-white/60">
+          <li><a routerLink="/inicio" class="hover:text-[#f05f02]">Inicio</a></li>
+          <li><span>/</span></li>
+          <li><a routerLink="/inicio" class="hover:text-[#f05f02]">Blog</a></li>
+          <li><span>/</span></li>
+          <li>Transformación Digital con IA</li>
+        </ol>
+      </nav>
+      
+      <span class="bg-[#f05f02]/20 text-[#f05f02] px-4 py-2 rounded-full font-semibold mb-6 inline-block">
+        Innovación
+      </span>
+      
+      <h1 class="text-4xl md:text-6xl font-bold mb-6">
+        Transformación Digital con IA
+      </h1>
+      
+      <p class="text-xl md:text-2xl text-white/80 mb-8">
+        Descubre cómo la inteligencia artificial está revolucionando los negocios y creando nuevas oportunidades.
+      </p>
+      
+      <div class="flex flex-wrap items-center gap-6 text-white/60">
+        <span>1 de Junio, 2024</span>
+        <span>12 min de lectura</span>
+        <span>Por BOOST AGENCY</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <article class="lg:col-span-3">
+          <img src="assets/images/inicio/Foto_header.png" alt="Transformación Digital con IA" class="w-full h-96 object-cover rounded-2xl mb-8">
+          
+          <h2 class="text-3xl font-bold mb-6">La Revolución de la Inteligencia Artificial</h2>
+          <p class="text-lg text-white/80 mb-8">La inteligencia artificial no es solo una tecnología del futuro, es la realidad que está transformando cada aspecto de los negocios modernos. Desde la automatización de procesos hasta la toma de decisiones estratégicas.</p>
+          
+          <h3 class="text-2xl font-bold mb-6 mt-12">¿Cómo la IA está cambiando el panorama empresarial?</h3>
+          <p class="text-lg text-white/80 mb-8">La IA está democratizando el acceso a capacidades que antes solo estaban disponibles para las grandes corporaciones. Ahora, empresas de todos los tamaños pueden aprovechar el poder de la inteligencia artificial.</p>
+          
+          <div class="bg-[#f05f02]/10 border-l-4 border-[#f05f02] p-6 my-8 rounded-r-2xl">
+            <h4 class="text-xl font-bold text-[#f05f02] mb-4">💡 Punto Clave</h4>
+            <p class="text-lg text-white/90">Las empresas que adoptan IA en su transformación digital ven un incremento promedio del 45% en la eficiencia operativa y un 60% en la satisfacción del cliente.</p>
+          </div>
+          
+          <h3 class="text-2xl font-bold mb-6 mt-12">Conclusión</h3>
+          <p class="text-lg text-white/80 mb-8">La transformación digital con IA no es una opción, es una necesidad para mantenerse competitivo en el mercado actual. Las empresas que no se adapten se quedarán atrás.</p>
+          
+          <div class="bg-gradient-to-r from-[#f05f02]/20 to-[#d94f01]/20 p-8 my-12 rounded-2xl">
+            <h4 class="text-xl font-bold text-white mb-4">¿Listo para tu transformación digital?</h4>
+            <p class="text-lg text-white/90 mb-6">En BOOST AGENCY te ayudamos a implementar soluciones de IA para transformar tu negocio digitalmente.</p>
+            <a routerLink="/contacto" class="inline-flex items-center px-6 py-3 bg-[#f05f02] text-white font-semibold rounded-full hover:bg-[#d94f01] transition-colors">
+              Contactar con nosotros
+            </a>
+          </div>
+        </article>
+
+        <aside class="lg:col-span-1">
+          <div class="bg-[#181818] rounded-2xl p-6 mb-8">
+            <h4 class="text-lg font-bold text-white mb-4">Compartir artículo</h4>
+            <div class="space-y-3">
+              <button (click)="compartirEnRedes('twitter')" class="w-full flex items-center justify-center px-4 py-3 bg-[#1da1f2] text-white rounded-full hover:bg-[#1a8cd8] transition-colors">
+                Compartir en Twitter
+              </button>
+              <button (click)="compartirEnRedes('linkedin')" class="w-full flex items-center justify-center px-4 py-3 bg-[#0077b5] text-white rounded-full hover:bg-[#006097] transition-colors">
+                Compartir en LinkedIn
+              </button>
+              <button (click)="compartirEnRedes('facebook')" class="w-full flex items-center justify-center px-4 py-3 bg-[#1877f2] text-white rounded-full hover:bg-[#166fe5] transition-colors">
+                Compartir en Facebook
+              </button>
+            </div>
+          </div>
+
+          <div class="bg-[#181818] rounded-2xl p-6 mb-8">
+            <h4 class="text-lg font-bold text-white mb-4">Descargar artículo</h4>
+            <button (click)="descargarPDF()" class="w-full flex items-center justify-center px-4 py-3 bg-[#f05f02] text-white rounded-full hover:bg-[#d94f01] transition-colors">
+              Descargar PDF
+            </button>
+          </div>
+
+          <div class="bg-[#181818] rounded-2xl p-6">
+            <h4 class="text-lg font-bold text-white mb-4">Artículos relacionados</h4>
+            <div class="space-y-4">
+              <a routerLink="/articulo-1" class="block p-4 bg-[#f05f02]/10 rounded-xl hover:bg-[#f05f02]/20 transition-colors">
+                <h5 class="font-semibold text-white mb-2">Marketing Estratégico Digital e IA</h5>
+                <p class="text-sm text-white/60">Las medianas empresas pueden escalar integrando datos...</p>
+              </a>
+              <a routerLink="/articulo-2" class="block p-4 bg-[#f05f02]/10 rounded-xl hover:bg-[#f05f02]/20 transition-colors">
+                <h5 class="font-semibold text-white mb-2">El Poder de las Mentes Jóvenes</h5>
+                <p class="text-sm text-white/60">Jóvenes profesionales están transformando industrias...</p>
+              </a>
+              <a routerLink="/articulo-3" class="block p-4 bg-[#f05f02]/10 rounded-xl hover:bg-[#f05f02]/20 transition-colors">
+                <h5 class="font-semibold text-white mb-2">Cómo Generar $1M en Ventas</h5>
+                <p class="text-sm text-white/60">Lograr $1 millón en ventas es posible con datos...</p>
+              </a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+</div> 
