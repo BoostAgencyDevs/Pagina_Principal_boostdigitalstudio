@@ -37,7 +37,9 @@ export class Articulo4Component implements OnInit {
   }
 
   descargarPDF(): void {
-    console.log('Descargando PDF del artículo...');
-    alert('Función de descarga de PDF en desarrollo');
+    const link = document.createElement('a');
+    link.href = 'assets/documents/Articulo 4.pdf';
+    link.download = 'Transformacion_Digital_con_IA_BOOST_AGENCY.pdf';
+    link.click();
   }
 } 

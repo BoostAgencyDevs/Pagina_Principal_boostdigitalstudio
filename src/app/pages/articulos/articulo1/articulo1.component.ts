@@ -41,9 +41,9 @@ export class Articulo1Component implements OnInit {
 
   // Método para descargar PDF
   descargarPDF(): void {
-    // Aquí se puede implementar la lógica para descargar el PDF
-    console.log('Descargando PDF del artículo...');
-    // Por ahora solo muestra un mensaje
-    alert('Función de descarga de PDF en desarrollo');
+    const link = document.createElement('a');
+    link.href = 'assets/documents/Articulo 1.pdf';
+    link.download = 'Marketing_Estrategico_Digital_IA_BOOST_AGENCY.pdf';
+    link.click();
   }
 } 

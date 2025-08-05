@@ -37,7 +37,9 @@ export class Articulo2Component implements OnInit {
   }
 
   descargarPDF(): void {
-    console.log('Descargando PDF del artículo...');
-    alert('Función de descarga de PDF en desarrollo');
+    const link = document.createElement('a');
+    link.href = 'assets/documents/Articulo 2.pdf';
+    link.download = 'El_Poder_de_las_Mentes_Jovenes_BOOST_AGENCY.pdf';
+    link.click();
   }
 } 

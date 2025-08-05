@@ -290,21 +290,21 @@ Notas para expansión futura:
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <!-- Imagen del producto -->
         <div class="relative">
-          <img [src]="productoSeleccionado?.imagen || 'assets/images/global/Logo_Principal.png'" 
-               [alt]="'Imagen de ' + (productoSeleccionado?.nombre || 'Producto')" 
+          <img [src]="productoSeleccionado.imagen || 'assets/images/global/Logo_Principal.png'" 
+               [alt]="'Imagen de ' + (productoSeleccionado.nombre || 'Producto')" 
                title="Imagen del producto"
                class="w-full h-80 object-cover rounded-2xl shadow-lg" />
           <div class="absolute top-4 left-4 bg-[#f05f02] text-white px-3 py-1 rounded-full text-sm font-semibold">
-            {{productoSeleccionado?.categoria}}
+            {{productoSeleccionado.categoria}}
           </div>
         </div>
         
         <!-- Información del producto -->
         <div class="flex flex-col justify-between">
           <div>
-            <h2 class="text-3xl font-bold text-white mb-4">{{productoSeleccionado?.nombre}}</h2>
-            <div class="text-[#f05f02] font-bold text-4xl mb-6 glow-text">{{formatPrice(productoSeleccionado?.precio || 0)}}</div>
-            <p class="text-white/80 text-lg leading-relaxed mb-6">{{productoSeleccionado?.descripcion}}</p>
+            <h2 class="text-3xl font-bold text-white mb-4">{{productoSeleccionado.nombre}}</h2>
+            <div class="text-[#f05f02] font-bold text-4xl mb-6 glow-text">{{formatPrice(productoSeleccionado.precio || 0)}}</div>
+            <p class="text-white/80 text-lg leading-relaxed mb-6">{{productoSeleccionado.descripcion}}</p>
             
             <!-- Características adicionales (preparado para edición) -->
             <div class="space-y-3 mb-8">

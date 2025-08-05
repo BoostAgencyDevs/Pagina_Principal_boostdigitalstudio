@@ -37,7 +37,9 @@ export class Articulo3Component implements OnInit {
   }
 
   descargarPDF(): void {
-    console.log('Descargando PDF del artículo...');
-    alert('Función de descarga de PDF en desarrollo');
+    const link = document.createElement('a');
+    link.href = 'assets/documents/Articulo 3.pdf';
+    link.download = 'Como_Generar_1M_en_Ventas_BOOST_AGENCY.pdf';
+    link.click();
   }
 } 
