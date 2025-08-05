@@ -15,10 +15,10 @@ Permite a los usuarios enviar mensajes a través de un formulario.
     </section>
   
     <!-- Contenedor principal -->
-    <section class="flex flex-col lg:flex-row gap-8 w-full px-3 sm:px-5 md:px-8 lg:px-10 xl:px-12 2xl:px-12 3xl:px-[10px] mb-16 animate-fade-in fade-scale">
+    <section class="flex items-center justify-center w-full max-w-7xl mx-auto px-3 sm:px-5 md:px-8 lg:px-10 xl:px-12 2xl:px-12 3xl:px-[10px] mb-16 animate-fade-in fade-scale">
       <!-- Formulario -->
       <!-- Se añade [formGroup] y (ngSubmit) para vincular con el formulario reactivo -->
-      <form [formGroup]="contactForm" (ngSubmit)="submitContactForm()" class="flex-1 max-w-2xl mx-auto lg:mx-0 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-2xl border border-white/10 flex flex-col gap-6 animate-fade-in slide-bottom hover:shadow-orange-500/20 transition-all duration-500">
+      <form [formGroup]="contactForm" (ngSubmit)="submitContactForm()" class="w-full max-w-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-2xl border border-white/10 flex flex-col gap-6 animate-zoom-in slide-bottom hover:shadow-orange-500/20 transition-all duration-700 hover:scale-105">
         <!-- Header del formulario -->
         <div class="text-center mb-4 animate-fade-in slide-bottom">
           <div class="w-16 h-16 bg-gradient-to-r from-[#f05f02] to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-zoom-in">
@@ -88,34 +88,6 @@ Permite a los usuarios enviar mensajes a través de un formulario.
         <div *ngIf="error" class="text-red-400 text-center mt-2 text-base sm:text-lg 3xl:text-xl bg-red-500/10 rounded-lg p-3 border border-red-500/20 animate-pulse">{{ error }}</div>
         <div *ngIf="message" class="text-green-400 text-center mt-2 text-base sm:text-lg 3xl:text-xl bg-green-500/10 rounded-lg p-3 border border-green-500/20 animate-pulse">{{ message }}</div>
       </form>
-  
-      <!-- Información de contacto -->
-      <div class="flex-1 flex flex-col gap-6 justify-center animate-fade-in slide-right">
-        <div class="flex items-start gap-3 animate-fade-in slide-bottom">
-          <span class="mt-1"><svg class="w-6 h-6 text-[#f05f02]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" /><circle cx="12" cy="10" r="3" /></svg></span>
-          <div>
-            <span class="font-semibold text-base sm:text-lg 3xl:text-xl">Dirección:</span><br />
-            <span class="text-white/80 text-base sm:text-lg 3xl:text-xl">Av. Principal 123, Ciudad, País</span>
-          </div>
-        </div>
-        <div class="flex items-start gap-3 animate-fade-in slide-bottom">
-          <span class="mt-1"><svg class="w-6 h-6 text-[#f05f02]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 12v1a4 4 0 01-8 0v-1m8 0a4 4 0 00-8 0m8 0V8a4 4 0 00-8 0v4m8 0a4 4 0 01-8 0" /></svg></span>
-          <div>
-            <span class="font-semibold text-base sm:text-lg 3xl:text-xl">Correos:</span><br />
-            <span class="text-white/80 block text-base sm:text-lg 3xl:text-xl">info&#64;boostagency.com</span>
-            <span class="text-white/80 block text-base sm:text-lg 3xl:text-xl">soporte&#64;boostagency.com</span>
-          </div>
-        </div>
-        <div class="flex items-start gap-3 animate-fade-in slide-bottom">
-          <span class="mt-1"><svg class="w-6 h-6 text-[#f05f02]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2V5zm0 10a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2zm10-10a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zm0 10a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg></span>
-          <div>
-            <span class="font-semibold text-base sm:text-lg 3xl:text-xl">Teléfonos:</span><br />
-            <span class="text-white/80 block text-base sm:text-lg 3xl:text-xl">Colombia: +57 301 123 4567</span>
-            <span class="text-white/80 block text-base sm:text-lg 3xl:text-xl">Panamá: +507 6789 1234</span>
-            <span class="text-white/80 block text-base sm:text-lg 3xl:text-xl">USA: +1 (305) 555-6789</span>
-          </div>
-        </div>
-      </div>
     </section>
   
     <!-- Botón WhatsApp -->
