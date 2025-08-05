@@ -171,39 +171,106 @@
       <!-- Tarjeta grande con slider de video/imágenes (izquierda, ocupa 2 columnas en desktop) -->
       <div class="lg:col-span-2 flex bg-[#181818] rounded-2xl lg:rounded-3xl xl:rounded-3xl overflow-hidden shadow-lg h-full items-center justify-center p-0">
         <div class="w-full h-full flex items-center justify-center relative">
-          <!-- Slider local con navegación -->
-          <label for="blog-slide1" class="sr-only">Mostrar primer panel del blog</label>
+          <!-- Slider de imágenes con navegación -->
+          <label for="blog-slide1" class="sr-only">Mostrar primera imagen del blog</label>
           <input type="radio" name="blog-slider" id="blog-slide1" class="hidden" checked>
-          <label for="blog-slide2" class="sr-only">Mostrar segundo panel del blog</label>
+          <label for="blog-slide2" class="sr-only">Mostrar segunda imagen del blog</label>
           <input type="radio" name="blog-slider" id="blog-slide2" class="hidden">
+          <label for="blog-slide3" class="sr-only">Mostrar tercera imagen del blog</label>
+          <input type="radio" name="blog-slider" id="blog-slide3" class="hidden">
+          <label for="blog-slide4" class="sr-only">Mostrar cuarta imagen del blog</label>
+          <input type="radio" name="blog-slider" id="blog-slide4" class="hidden">
+          
           <div class="slider-blog-panel w-full h-full">
+            <!-- Imagen 1 -->
             <div class="w-full h-full" id="blog-panel1">
-              <video src="assets/images/inicio/Slider.mp4" controls autoplay loop class="w-full h-full rounded-2xl lg:rounded-3xl xl:rounded-3xl bg-black object-cover aspect-video max-h-96 lg:max-h-[500px] xl:max-h-[600px] transition-all duration-300"></video>
+              <img src="assets/images/inicio/blog-slider-1.jpg" alt="Imagen Blog 1" class="w-full h-full rounded-2xl lg:rounded-3xl xl:rounded-3xl object-cover aspect-video max-h-96 lg:max-h-[500px] xl:max-h-[600px] transition-all duration-300 bg-black" />
             </div>
+            <!-- Imagen 2 -->
             <div class="w-full h-full" id="blog-panel2" class="hidden-blog-panel">
-              <img src="assets/images/inicio/Foto_header.png" alt="Imagen Blog" class="w-full h-full rounded-2xl lg:rounded-3xl xl:rounded-3xl object-cover aspect-video max-h-96 lg:max-h-[500px] xl:max-h-[600px] transition-all duration-300 bg-black" />
+              <img src="assets/images/inicio/blog-slider-2.jpg" alt="Imagen Blog 2" class="w-full h-full rounded-2xl lg:rounded-3xl xl:rounded-3xl object-cover aspect-video max-h-96 lg:max-h-[500px] xl:max-h-[600px] transition-all duration-300 bg-black" />
+            </div>
+            <!-- Imagen 3 -->
+            <div class="w-full h-full" id="blog-panel3" class="hidden-blog-panel">
+              <img src="assets/images/inicio/blog-slider-3.jpg" alt="Imagen Blog 3" class="w-full h-full rounded-2xl lg:rounded-3xl xl:rounded-3xl object-cover aspect-video max-h-96 lg:max-h-[500px] xl:max-h-[600px] transition-all duration-300 bg-black" />
+            </div>
+            <!-- Imagen 4 -->
+            <div class="w-full h-full" id="blog-panel4" class="hidden-blog-panel">
+              <img src="assets/images/inicio/blog-slider-4.jpg" alt="Imagen Blog 4" class="w-full h-full rounded-2xl lg:rounded-3xl xl:rounded-3xl object-cover aspect-video max-h-96 lg:max-h-[500px] xl:max-h-[600px] transition-all duration-300 bg-black" />
             </div>
           </div>
+          
           <!-- Flecha Izquierda -->
           <div class="absolute left-2 lg:left-4 xl:left-6 top-1/2 -translate-y-1/2 z-10">
-            <label for="blog-slide1" class="bg-black/70 hover:bg-[#f05f02] text-white rounded-full p-2 lg:p-3 xl:p-4 transition-all duration-200 shadow-lg cursor-pointer">
+            <button onclick="previousSlide()" title="Imagen anterior" class="bg-black/70 hover:bg-[#f05f02] text-white rounded-full p-2 lg:p-3 xl:p-4 transition-all duration-200 shadow-lg cursor-pointer">
               <svg class="w-6 h-6 lg:w-7 lg:h-7 xl:w-8 xl:h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
-            </label>
+            </button>
           </div>
           <!-- Flecha Derecha -->
           <div class="absolute right-2 lg:right-4 xl:right-6 top-1/2 -translate-y-1/2 z-10">
-            <label for="blog-slide2" class="bg-black/70 hover:bg-[#f05f02] text-white rounded-full p-2 lg:p-3 xl:p-4 transition-all duration-200 shadow-lg cursor-pointer">
+            <button onclick="nextSlide()" title="Siguiente imagen" class="bg-black/70 hover:bg-[#f05f02] text-white rounded-full p-2 lg:p-3 xl:p-4 transition-all duration-200 shadow-lg cursor-pointer">
               <svg class="w-6 h-6 lg:w-7 lg:h-7 xl:w-8 xl:h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
-            </label>
+            </button>
           </div>
+          
+          <!-- Indicadores de navegación -->
+          <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex space-x-2">
+            <label for="blog-slide1" class="w-3 h-3 rounded-full bg-white/50 hover:bg-[#f05f02] cursor-pointer transition-all duration-200"></label>
+            <label for="blog-slide2" class="w-3 h-3 rounded-full bg-white/50 hover:bg-[#f05f02] cursor-pointer transition-all duration-200"></label>
+            <label for="blog-slide3" class="w-3 h-3 rounded-full bg-white/50 hover:bg-[#f05f02] cursor-pointer transition-all duration-200"></label>
+            <label for="blog-slide4" class="w-3 h-3 rounded-full bg-white/50 hover:bg-[#f05f02] cursor-pointer transition-all duration-200"></label>
+          </div>
+          
           <style>
-            #blog-slide1:checked ~ .slider-blog-panel #blog-panel1 { display: block; }
-            #blog-slide1:checked ~ .slider-blog-panel #blog-panel2 { display: none; }
-            #blog-slide2:checked ~ .slider-blog-panel #blog-panel1 { display: none; }
-            #blog-slide2:checked ~ .slider-blog-panel #blog-panel2 { display: block; }
+            /* Ocultar todos los paneles por defecto */
+            .slider-blog-panel > div { display: none; }
             
-
+            /* Mostrar panel activo según el radio seleccionado */
+            #blog-slide1:checked ~ .slider-blog-panel #blog-panel1 { display: block; }
+            #blog-slide2:checked ~ .slider-blog-panel #blog-panel2 { display: block; }
+            #blog-slide3:checked ~ .slider-blog-panel #blog-panel3 { display: block; }
+            #blog-slide4:checked ~ .slider-blog-panel #blog-panel4 { display: block; }
+            
+            /* Estilo para indicadores activos */
+            #blog-slide1:checked ~ .slider-blog-panel ~ div label[for="blog-slide1"],
+            #blog-slide2:checked ~ .slider-blog-panel ~ div label[for="blog-slide2"],
+            #blog-slide3:checked ~ .slider-blog-panel ~ div label[for="blog-slide3"],
+            #blog-slide4:checked ~ .slider-blog-panel ~ div label[for="blog-slide4"] {
+              background-color: #f05f02;
+            }
           </style>
+          
+          <script>
+            let currentSlide = 1;
+            const totalSlides = 4;
+            
+            function showSlide(slideNumber) {
+              // Ocultar todos los slides
+              for (let i = 1; i <= totalSlides; i++) {
+                const slide = document.getElementById(`blog-slide${i}`);
+                if (slide) slide.checked = false;
+              }
+              
+              // Mostrar el slide seleccionado
+              const selectedSlide = document.getElementById(`blog-slide${slideNumber}`);
+              if (selectedSlide) selectedSlide.checked = true;
+              
+              currentSlide = slideNumber;
+            }
+            
+            function nextSlide() {
+              const next = currentSlide === totalSlides ? 1 : currentSlide + 1;
+              showSlide(next);
+            }
+            
+            function previousSlide() {
+              const prev = currentSlide === 1 ? totalSlides : currentSlide - 1;
+              showSlide(prev);
+            }
+            
+            // Auto-play cada 5 segundos
+            setInterval(nextSlide, 5000);
+          </script>
         </div>
       </div>
       <!-- Tarjeta vertical grande a la derecha -->

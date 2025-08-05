@@ -399,4 +399,158 @@ img:hover {
 
 .active\:scale-98:active {
   transform: scale(0.98);
+}
+
+/* Estilos para el selector de monedas - MEJORADO */
+.currency-select {
+  position: relative;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23f05f02' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 12px center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  padding-right: 40px;
+  border-radius: 9999px !important;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(240, 95, 2, 0.1) !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer;
+}
+
+/* Ocultar dropdown por defecto */
+.currency-select:not(:focus) {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23f05f02' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+}
+
+/* Mostrar dropdown solo al hacer focus (click) */
+.currency-select:focus {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+}
+
+.currency-select:focus {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+}
+
+/* Estilos para las opciones del dropdown - ELEGANTE */
+.currency-select option {
+  background: rgba(0, 0, 0, 0.95) !important;
+  color: #ffffff !important;
+  padding: 14px 18px !important;
+  border: none;
+  outline: none;
+  border-radius: 12px !important;
+  margin: 4px 0 !important;
+  -webkit-backdrop-filter: blur(15px) !important;
+  backdrop-filter: blur(15px) !important;
+  border: 1px solid rgba(240, 95, 2, 0.3) !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+}
+
+.currency-select option:hover {
+  background: linear-gradient(135deg, rgba(240, 95, 2, 0.2), rgba(240, 95, 2, 0.1)) !important;
+  border-color: rgba(240, 95, 2, 0.6) !important;
+  transform: translateX(4px) !important;
+  box-shadow: 0 4px 15px rgba(240, 95, 2, 0.2) !important;
+}
+
+.currency-select option:checked {
+  background: linear-gradient(135deg, rgba(240, 95, 2, 0.9), rgba(240, 95, 2, 0.7)) !important;
+  color: #ffffff !important;
+  border-color: rgba(240, 95, 2, 0.9) !important;
+  box-shadow: 
+    0 8px 25px rgba(240, 95, 2, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  font-weight: 600 !important;
+}
+
+/* Asegurar que el dropdown tenga fondo elegante en todos los navegadores */
+.currency-select:focus option {
+  background: rgba(0, 0, 0, 0.9) !important;
+}
+
+/* Estilos específicos para Webkit (Chrome, Safari, Edge) - MEJORADO */
+.currency-select::-webkit-listbox {
+  background: rgba(0, 0, 0, 0.95) !important;
+  border-radius: 16px !important;
+  border: 2px solid rgba(240, 95, 2, 0.4) !important;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.8),
+    0 0 30px rgba(240, 95, 2, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  backdrop-filter: blur(20px) !important;
+  padding: 8px !important;
+  margin-top: 8px !important;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease !important;
+}
+
+/* Mostrar dropdown solo al hacer focus */
+.currency-select:focus::-webkit-listbox {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.currency-select::-webkit-option {
+  background: rgba(0, 0, 0, 0.8) !important;
+  color: #ffffff !important;
+  border-radius: 12px !important;
+  margin: 4px 0 !important;
+  padding: 12px 16px !important;
+  border: 1px solid rgba(240, 95, 2, 0.2) !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+.currency-select::-webkit-option:hover {
+  background: linear-gradient(135deg, rgba(240, 95, 2, 0.2), rgba(240, 95, 2, 0.1)) !important;
+  border-color: rgba(240, 95, 2, 0.6) !important;
+  transform: translateX(4px) !important;
+  box-shadow: 0 4px 15px rgba(240, 95, 2, 0.2) !important;
+}
+
+.currency-select::-webkit-option:checked {
+  background: linear-gradient(135deg, rgba(240, 95, 2, 0.9), rgba(240, 95, 2, 0.7)) !important;
+  color: #ffffff !important;
+  border-color: rgba(240, 95, 2, 0.9) !important;
+  box-shadow: 
+    0 8px 25px rgba(240, 95, 2, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  font-weight: 600 !important;
+}
+
+/* Efecto 3D para imágenes de productos - CORREGIDO */
+.product-card {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.product-card img {
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+/* Efecto 3D solo en pantallas grandes */
+@media (min-width: 1024px) {
+  .product-card:hover img {
+    transform: rotateY(20deg) scale(1.1) !important;
+    box-shadow: 
+      0 25px 50px rgba(0, 0, 0, 0.4),
+      0 0 25px rgba(240, 95, 2, 0.3);
+  }
+  
+  .product-card:hover {
+    transform: perspective(1000px) rotateY(-8deg) scale(1.02) !important;
+    box-shadow: 
+      0 30px 60px rgba(0, 0, 0, 0.5),
+      0 0 40px rgba(240, 95, 2, 0.4) !important;
+  }
 } 
