@@ -1,6 +1,6 @@
 # Configuración de Build para Netlify
 [build]
-  command = "ng build --configuration production"
+  command = "node set-env.js && ng build --configuration production"
   publish = "dist/frontend"
 
 # Redirección para Single Page Applications (SPA) como Angular

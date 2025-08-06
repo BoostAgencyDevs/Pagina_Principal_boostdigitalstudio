@@ -17,5 +17,5 @@
  */
 export const environment = {
   production: false,  // Entorno de desarrollo
-  apiUrl: process.env['API_URL'] || 'http://localhost:3000/api'  // URL de la API con fallback local
+  apiUrl: 'http://localhost:3000/api'  // URL de la API para desarrollo local
 };
