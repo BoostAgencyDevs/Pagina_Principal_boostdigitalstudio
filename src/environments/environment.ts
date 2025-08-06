@@ -17,5 +17,5 @@
  */
 export const environment = {
   production: false,  // Entorno de desarrollo
-  apiUrl: 'http://api-nodejs-production-f88a.up.railway.app/api'  // URL de la API en Railway
+  apiUrl: process.env['API_URL'] || 'http://localhost:3000/api'  // URL de la API con fallback local
 };
