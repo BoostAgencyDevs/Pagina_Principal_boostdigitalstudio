@@ -23,7 +23,10 @@ import { ContenidoService } from '../../shared/services/contenido.service';
 @Component({
   selector: 'app-inicio',  // Selector para usar en templates
   templateUrl: './inicio.component.html',
-  styleUrls: ['./inicio.component.css']
+  styleUrls: ['./inicio.component.css'],
+  host: {
+    'class': 'inicio-background'
+  }
 })
 export class InicioComponent implements OnInit {
   /**
