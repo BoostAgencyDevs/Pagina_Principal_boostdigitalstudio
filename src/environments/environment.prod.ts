@@ -17,5 +17,5 @@
  */
 export const environment = {
   production: true,
-  apiUrl: 'http://api-nodejs-production-f88a.up.railway.app/api' // Marcador de posición para la URL de la API
+  apiUrl: '__API_URL__' // Marcador de posición para la URL de la API
 };
