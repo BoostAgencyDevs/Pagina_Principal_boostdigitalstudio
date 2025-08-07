@@ -61,4 +61,41 @@
 
 .btn-boost-enhanced:hover::before {
   left: 100%;
+}
+
+/* Mejoras específicas para móviles */
+@media (max-width: 640px) {
+  .btn-boost-enhanced {
+    padding: 0.875rem 1.5rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+  }
+  
+  /* Mejorar la legibilidad de los inputs en móviles */
+  input, textarea {
+    font-size: 16px !important; /* Evita zoom en iOS */
+  }
+  
+  /* Ajustar espaciado para mejor usabilidad táctil */
+  label {
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Mejorar el contraste y legibilidad en pantallas pequeñas */
+  .text-white\/80 {
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  /* Optimizar el botón de WhatsApp para móviles */
+  .fixed.bottom-4.right-4 {
+    bottom: 1rem;
+    right: 1rem;
+  }
+}
+
+/* Mejoras para tablets */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .btn-boost-enhanced {
+    padding: 1rem 1.75rem;
+  }
 } 

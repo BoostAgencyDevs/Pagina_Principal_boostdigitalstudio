@@ -21,7 +21,6 @@ import { LayoutComponent } from './layout/layout.component';
 import { LoaderComponent } from './layout/loader/loader.component';
 
 // Componentes de páginas
-import { InicioComponent } from './pages/inicio/inicio.component';
 import { NosotrosComponent } from './pages/nosotros/nosotros.component';
 import { ServiciosComponent } from './pages/servicios/servicios.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
@@ -48,7 +47,6 @@ import { Articulo4Component } from './pages/articulos/articulo4/articulo4.compon
     LoaderComponent,     // Loader para pantalla de carga
     
     // Componentes de páginas
-    InicioComponent,
     NosotrosComponent,
     ServiciosComponent,
     ContactoComponent,
