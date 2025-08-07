@@ -32,6 +32,14 @@ import { Articulo2Component } from './pages/articulos/articulo2/articulo2.compon
 import { Articulo3Component } from './pages/articulos/articulo3/articulo3.component';
 import { Articulo4Component } from './pages/articulos/articulo4/articulo4.component';
 
+// Componentes legales
+import { PoliticaPrivacidadComponent } from './pages/legal/politica-privacidad/politica-privacidad.component';
+import { TerminosServicioComponent } from './pages/legal/terminos-servicio/terminos-servicio.component';
+import { PoliticaCookiesComponent } from './pages/legal/politica-cookies/politica-cookies.component';
+
+// Componentes compartidos
+import { ScrollToTopComponent } from './shared/components/scroll-to-top/scroll-to-top.component';
+
 /**
  * Módulo raíz de la aplicación
  * 
@@ -56,7 +64,15 @@ import { Articulo4Component } from './pages/articulos/articulo4/articulo4.compon
     Articulo1Component,
     Articulo2Component,
     Articulo3Component,
-    Articulo4Component
+    Articulo4Component,
+    
+    // Componentes legales
+    PoliticaPrivacidadComponent,
+    TerminosServicioComponent,
+    PoliticaCookiesComponent,
+    
+    // Componentes compartidos
+    ScrollToTopComponent
   ],
   imports: [
     BrowserModule,       // Módulo para aplicaciones web

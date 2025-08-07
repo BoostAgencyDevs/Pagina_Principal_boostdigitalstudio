@@ -8,7 +8,8 @@
  * @version 1.0.0
  */
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ScrollService } from './shared/services/scroll.service';
 
 /**
  * Componente raíz de la aplicación
@@ -17,6 +18,7 @@ import { Component } from '@angular/core';
  * - Proporciona el layout principal de la aplicación
  * - Configura el router outlet para la navegación entre páginas
  * - Define el título de la aplicación
+ * - Inicializa servicios de scroll y animaciones
  */
 @Component({
   selector: 'app-root',  // Selector CSS para usar en el DOM
@@ -27,7 +29,16 @@ import { Component } from '@angular/core';
   `,
   styles: []
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   /** Título de la aplicación */
   title = 'BOOST AGENCY';
+
+  constructor(private scrollService: ScrollService) {}
+
+  ngOnInit(): void {
+    // Inicializar efectos de scroll después de que la aplicación esté lista
+    setTimeout(() => {
+      this.scrollService.init();
+    }, 100);
+  }
 }
