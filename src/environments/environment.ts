@@ -17,5 +17,5 @@
  */
 export const environment = {
   production: false,  // Entorno de desarrollo
-  apiUrl: 'http://api-nodejs-production-f88a.up.railway.app/api'  // URL de la API para desarrollo local
+  apiUrl: 'https://api-nodejs-production-f88a.up.railway.app/api'  // URL de la API para desarrollo local
 };
